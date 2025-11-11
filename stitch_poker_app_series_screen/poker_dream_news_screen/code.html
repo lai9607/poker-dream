@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Poker Dream - News</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#e4212e",
+              "background-light": "#f8f6f6",
+              "background-dark": "#211112",
+              "gold": "#FFC107",
+              "card-dark": "#1E1E1E",
+              "text-secondary-dark": "#A0A0A0"
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-[#121212]">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-[#121212]">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center justify-between bg-background-light/80 px-4 py-2 backdrop-blur-sm dark:bg-[#121212]/80">
+<div class="flex size-10 shrink-0 items-center justify-center">
+</div>
+<h1 class="flex-1 text-center text-xl font-bold text-zinc-900 dark:text-white">News</h1>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-zinc-900 dark:text-white">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</header>
+<!-- Main Content: Article List -->
+<main class="flex-1 space-y-2 px-4 pb-24 pt-4">
+<!-- Featured Article Card -->
+<div class="flex flex-col gap-3 rounded-xl bg-transparent dark:bg-card-dark p-4">
+<div class="aspect-video w-full rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Close-up shot of poker chips and playing cards on a green felt table." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCydBhN2lRqo3Qd7ldmqTaO9mQ-crrvEmtyIE1R7J-k6FAnumJ6wVEjofuf4DyHyn0vOr7CbfHZ0A79TNe891qJeUwR5S7-PxU_skS_fyeeqjI2KYGZHaiNsVLW0SWwc_rk0KghRuOjBrsq-qRZAB-oGM7WaczMOe-neBfI1775o2IkpjdelSBp6SWgmIvR32L-iKjBlwr0yZ1utr9L0Exgx308-OYoxt98GiRZNYb-PlF2Y2Yj3wCtkHFzMZzx3VWuCn7pGYfuHrVm");'></div>
+<div class="flex flex-col gap-1.5">
+<p class="font-bold text-gold text-sm uppercase tracking-wider">Featured</p>
+<p class="text-xl font-bold leading-tight text-zinc-900 dark:text-white">Daniel Negreanu Wins 7th Bracelet at WSOP Europe</p>
+<p class="text-sm font-normal leading-normal text-zinc-600 dark:text-text-secondary-dark">In a stunning final table performance, the poker legend outlasted a field of 500...</p>
+<p class="pt-1 text-xs font-normal text-zinc-500 dark:text-text-secondary-dark/80">PokerNews - Oct 26, 2023</p>
+</div>
+</div>
+<!-- Article Card -->
+<div class="flex items-center gap-4 rounded-xl bg-transparent dark:bg-card-dark p-4">
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-base font-bold leading-tight text-zinc-900 dark:text-white">Triton Super High Roller Series Announces 2024 Schedule</p>
+<p class="text-sm font-normal leading-normal text-zinc-600 dark:text-text-secondary-dark line-clamp-2">The prestigious high-stakes tour will return with stops in Monte Carlo, London, and Macau.</p>
+<p class="pt-1 text-xs font-normal text-zinc-500 dark:text-text-secondary-dark/80">CardPlayer - Oct 25, 2023</p>
+</div>
+<div class="aspect-square w-24 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="A poker player with sunglasses looking intently at his cards." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8S-ID0jTRV8m30PN6mHGUz9BResueg_pj2kY48LbpH4amqHSKQLm9SfZUHDe5fXVL8vQzOSHl7R3KTUvmc66M9fXk4LV5aI6KCOjPkaGpZzybg30qrgm7UFBx2MhcRXbwBC05I7PKjLagwbdUduAtfdpmEuxbv4soPMa7DWBzhPDI2QX5sX_N9i7hNYFdYBhg1qIbkoYBjuwI_02r-qgXv_-NHpqm83n3tnEAOMUS5y2ZxkiwcDWK8Oc6FXZ4JM-0EBrVWtUt5dZc");'></div>
+</div>
+<!-- Article Card -->
+<div class="flex items-center gap-4 rounded-xl bg-transparent dark:bg-card-dark p-4">
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-base font-bold leading-tight text-zinc-900 dark:text-white">Phil Ivey Discusses Strategy and Longevity in Exclusive Interview</p>
+<p class="text-sm font-normal leading-normal text-zinc-600 dark:text-text-secondary-dark line-clamp-2">The living legend opens up about his approach to the modern game and what keeps him motivated.</p>
+<p class="pt-1 text-xs font-normal text-zinc-500 dark:text-text-secondary-dark/80">WPT - Oct 24, 2023</p>
+</div>
+<div class="aspect-square w-24 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="Poker chips stacked neatly on a casino table." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8P5DzSYXzRLPmvuIt_9yobPQW7gpGNwnQ47WBWxa7O4ji7SdR5__nHXG3uBMSBIwoZc_szDOLfo3QybiknhEkI-Jssk1z6KpBgIr1t9PTy7gTgCeZVnx3pvBaDDLQqfCtoM1RjBeGUZM9_hPnwDmCgxQ7TEe7bPmo4PqSz5uyV5xBhTMFVx_oC-WEJAHnQvqY5ocHlDA7j6uw_lGV8dHwu0KKCE7ewytQ9PZPQLPeO5FDVZpBizbN2c-BY0dmy_Vaz1hwFhndjbSy");'></div>
+</div>
+<!-- Article Card -->
+<div class="flex items-center gap-4 rounded-xl bg-transparent dark:bg-card-dark p-4">
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-base font-bold leading-tight text-zinc-900 dark:text-white">Online Poker Traffic Surges in Q3 Report</p>
+<p class="text-sm font-normal leading-normal text-zinc-600 dark:text-text-secondary-dark line-clamp-2">New figures show a significant increase in online cash game and tournament players worldwide.</p>
+<p class="pt-1 text-xs font-normal text-zinc-500 dark:text-text-secondary-dark/80">PokerGo - Oct 23, 2023</p>
+</div>
+<div class="aspect-square w-24 flex-shrink-0 rounded-lg bg-cover bg-center bg-no-repeat" data-alt="A laptop screen showing an online poker game interface." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXnkMi03CLfQ_Gf5_TieoxuCd9PdozBGW2f42Bp7fXT60t99Hzoe6YLioid9kz3Ut9CcnZ6YqI8Y6oZzI_MH70-9Z-WEBqUPZGTFI8TL_8pqYYGqJFBmfFjgeXDLfVEeRBOFgjSnfHZMlIkV4Thhk0vsWvG8ADmMG2a2ZmSLPr5x640xeqTKEwxBO7wZTQylodO3oHnZsWyQqPui7xdEV02lYiHL1Gg2Z8LL3B43plZttdN0-mmm6bafhhjfNU950_wJ4_7NuLhMe0");'></div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 z-10 w-full max-w-md border-t border-white/10 bg-background-light/80 backdrop-blur-sm dark:bg-[#1E1E1E]/80">
+<div class="flex h-20 items-stretch justify-around">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-zinc-500 dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-zinc-500 dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="text-xs font-medium">Series</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-red-600 dark:text-primary" href="#">
+<span class="material-symbols-outlined">feed</span>
+<span class="text-xs font-bold">News</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-zinc-500 dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-xs font-medium">Alerts</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-zinc-500 dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-xs font-medium">More</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

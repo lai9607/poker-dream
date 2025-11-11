@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tournament Details Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#E53935",
+              "background-light": "#f8f6f6",
+              "background-dark": "#121212",
+              "component-dark": "#1E1E1E",
+              "accent-gold": "#FFC107",
+              "text-light": "#E0E0E0",
+              "text-muted": "#B0B0B0",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .material-symbols-outlined.fill {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-3">
+<button class="text-text-light flex h-10 w-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-text-light text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Philippines National Cup - Flight A</h1>
+<div class="w-10"></div> 
+</div>
+<main class="flex-1 pb-24">
+<div class="@container px-4">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-60" data-alt="Photo of the tournament winner holding a trophy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOuHC1lRKA4xqfCPilrCGFQprQINmbix1_HgzvVNPPGvkts9-iipK3lnSgaha00M9wgfMDmFQ9FR7ZZGkPfpt2dWa-p66OI643L1GSRMhxhUaQ0gmhHMUR1J_KrkwfdP506NXgpV2KdcmR3f_jiNEcDvuWn1LIfv87DKUiHhUJdCUztdiJrL3NFAHlLCIOnVuXS6WdAXm0yPjxrjKCiDQts44wj0IyKbmQT2U5lN9azeIuDlJyOA10HLew9nfyHV2G7_48tC9gIdno");'>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg bg-component-dark p-4">
+<p class="text-text-muted text-sm font-medium leading-normal">Total Prize Pool</p>
+<p class="text-accent-gold tracking-light text-2xl font-bold leading-tight">₱ 5,000,000</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg bg-component-dark p-4">
+<p class="text-text-muted text-sm font-medium leading-normal">Buy-in</p>
+<p class="text-text-light tracking-light text-2xl font-bold leading-tight">₱ 20,000</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg bg-component-dark p-4">
+<p class="text-text-muted text-sm font-medium leading-normal">Total Entries</p>
+<p class="text-text-light tracking-light text-2xl font-bold leading-tight">286</p>
+</div>
+</div>
+<h2 class="text-text-light text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Survivors</h2>
+<div class="grid grid-cols-[15%_1fr_25%] gap-4 px-4 pb-2">
+<p class="text-text-muted text-xs font-medium uppercase tracking-wider">Rank</p>
+<p class="text-text-muted text-xs font-medium uppercase tracking-wider">Player</p>
+<p class="text-text-muted text-xs font-medium uppercase tracking-wider text-right">Chips</p>
+</div>
+<div class="flex flex-col gap-2 px-4">
+<div class="grid grid-cols-[15%_1fr_25%] items-center gap-4 rounded-lg bg-component-dark p-4">
+<p class="text-text-light font-bold">1</p>
+<div class="flex items-center gap-3">
+<img class="h-5 w-auto rounded-sm" data-alt="Flag of Philippines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5XDTYpoaBsUWwaDgclIFQDZYvS9tl_eiP2JyRL9-HgGOyTrzW1y8HYUFHZ6mrrPcxZw1V3QQdeWcFCdHxNzXbyrVl46g9EnwEeIKK20UdPJgLLyY5Q4aCk8eWKJVqdPVoSqMz59Z9DEDcNId-mUtzE9Bw5EKFKEIQ3ZCLHlJ_n-OSu8aJzcUuhqhytFmqhQWF137-BgHFfxm10ixX53WMNQxzrefg8LQsdn1UvrsM341ay1T-1cMJUYlrslkHebaf8gnlPfgetLNH"/>
+<p class="text-text-light text-base font-medium">David Williams</p>
+</div>
+<p class="text-accent-gold text-base font-bold text-right">1,250,000</p>
+</div>
+<div class="grid grid-cols-[15%_1fr_25%] items-center gap-4 rounded-lg bg-component-dark p-4">
+<p class="text-text-light font-medium">2</p>
+<div class="flex items-center gap-3">
+<img class="h-5 w-auto rounded-sm" data-alt="Flag of Japan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAACsfKqgHKCOLoXQ6jbMBdJ2HysTEH1gsd1YOFfD1ibOGkV-KCXiwd0OJuVyzwNtdmDhgEKzb2idHps3vFBWHjsw_voZyOCv2uDqMsDsjHCse56g9UCJ-jmgOdK2PuiIyWJEtgrDuNqpJ4j32WqL1OirjSwC1ESO4-y1lmT5bbAQZqxIPaDaLNiPB35LpjfQPJoxi4UTS1IUVgJiknFOS1MhCuJVQcE8duSOocOpdp1RCUFcJWRtyQPbZx2GE-PDhRfobp4AmMKTVZ"/>
+<p class="text-text-light text-base font-medium">Yuki Tanaka</p>
+</div>
+<p class="text-text-light text-base font-medium text-right">980,500</p>
+</div>
+<div class="grid grid-cols-[15%_1fr_25%] items-center gap-4 rounded-lg bg-component-dark p-4">
+<p class="text-text-light font-medium">3</p>
+<div class="flex items-center gap-3">
+<img class="h-5 w-auto rounded-sm" data-alt="Flag of South Korea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1pUmn9Yx-PgZVofJGLOR3a_tq1ltkn1R8nHEgxKl0_NruItQRId22qyvQC6pYPgkiaTdNkdFRRO8WnF-wiNbZUDdeh9gqJx_TsVh1mTEVnSE6zlp4FddDxYvp5EjhPTVMPQamV_wQ9i2lAKdIb26o3LhmcS7BbIzVSiR3-VDki-CdmoXtfrjTWqTShS8_GR7Vee1zk9gxx49PvKqRv5DKkcgUoV4oHj6KurDMfxZI12C49JTIk2K5T9RfZKwL9eCADxfnOPMVg5cf"/>
+<p class="text-text-light text-base font-medium">Min-jun Kim</p>
+</div>
+<p class="text-text-light text-base font-medium text-right">860,000</p>
+</div>
+<div class="grid grid-cols-[15%_1fr_25%] items-center gap-4 rounded-lg bg-component-dark p-4">
+<p class="text-text-light font-medium">4</p>
+<div class="flex items-center gap-3">
+<img class="h-5 w-auto rounded-sm" data-alt="Flag of United States" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNvhfZPCUokL9HIrIYZvOQATPU4B2G4lA_yYzpkL1x_uSeNuTRdQhq1jq8Tyxky3sD7HSx4eyg4XDr1pmME8bECrp7x8mrzUrvH0ruFzGHsncGkgzRxS8xUSE8Hb3pICEbrMdXC0ED_eWbDHWoJ1iz52WrjW6sG1GCf_aq0ODFG8GL5pWEKwPZTNuCdWpBNLl3ugnrvMCYmje_1EvzS7Qutlja9LJaPEney_aoAqD006Z4uVgHe6C_kWt5HsuD7iiCWgrVaeImuVsu"/>
+<p class="text-text-light text-base font-medium">Jessica Miller</p>
+</div>
+<p class="text-text-light text-base font-medium text-right">755,200</p>
+</div>
+<div class="grid grid-cols-[15%_1fr_25%] items-center gap-4 rounded-lg bg-component-dark p-4">
+<p class="text-text-light font-medium">5</p>
+<div class="flex items-center gap-3">
+<img class="h-5 w-auto rounded-sm" data-alt="Flag of Philippines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaoInJ-J4uBFpUObixKzCkzdFAMB7NU67mcWwvGE-AItwwaMN2ACBxjujG34iQSd5xtJAdFKgWe2yv2gl_EczzAQBa_31SdTI4XCeTwMD-7LcPspVz-QN9P8OKrzwJd9Ni6OhHVK5G1JInZdPHmli5NvFRzcSa56yZ1ByPsR0_BYyHg0oDOrdtQEaT0a5vzMF9AM8XNSHKjH0m-K9iRsLXe2s-GQ29r0sVi4UC97edQY_UVi54y7TO15buQIlZADbm-xknOvIR6MV_"/>
+<p class="text-text-light text-base font-medium">Miguel Santos</p>
+</div>
+<p class="text-text-light text-base font-medium text-right">640,000</p>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-10 border-t border-t-component-dark bg-background-dark/80 backdrop-blur-sm">
+<div class="flex h-20 items-center justify-around px-2">
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill text-primary">emoji_events</span>
+<span class="text-xs font-bold">Series</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="text-xs">News</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-xs">Alerts</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-xs">More</span>
+</a>
+</div>
+</nav>
+</div>
+
+</body></html>

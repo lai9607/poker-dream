@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Poker Dream - Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#D32F2F", //Poker-table red
+              "background-light": "#f8f6f6",
+              "background-dark": "#121212", // Deep near-black
+              "card-dark": "#1E1E1E", // Lighter shade for cards
+              "text-light": "#F5F5F5", // Off-white
+              "text-dark": "#9E9E9E", // Light grey for secondary text
+              "accent-gold": "#FFC107" // Gold/Amber
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative mx-auto flex h-screen max-w-sm flex-col overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<header class="flex shrink-0 items-center justify-between px-4 pt-6 pb-4">
+<div class="flex h-12 w-12 items-center justify-start">
+<!-- Placeholder for a back button or menu icon if needed -->
+</div>
+<h1 class="text-xl font-bold text-text-light">Alerts</h1>
+<div class="flex h-12 w-12 items-center justify-end">
+<button class="text-sm font-medium text-primary">Clear all</button>
+</div>
+</header>
+<!-- Notification List -->
+<main class="flex-1 overflow-y-auto px-4">
+<div class="flex flex-col gap-2">
+<!-- Date Grouping -->
+<h2 class="py-2 text-sm font-bold uppercase tracking-wider text-text-dark">Today</h2>
+<!-- Notification Item 1 -->
+<div class="flex min-h-[72px] items-center gap-4 rounded-xl bg-card-dark p-3">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined text-accent-gold">event</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-base font-medium leading-tight text-text-light">Tournament Reminder</p>
+<p class="text-sm font-normal leading-tight text-text-dark">WPT Championship Day 1A starts in 1 hour.</p>
+<p class="pt-1 text-xs text-text-dark/70">5m ago</p>
+</div>
+<div class="flex h-full shrink-0 items-start pt-1">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Notification Item 2 -->
+<div class="flex min-h-[72px] items-center gap-4 rounded-xl bg-card-dark p-3">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined text-accent-gold">star</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-base font-medium leading-tight text-text-light">Followed Player Update</p>
+<p class="text-sm font-normal leading-tight text-text-dark">Your followed player, Phil Ivey, has just reached a final table.</p>
+<p class="pt-1 text-xs text-text-dark/70">30m ago</p>
+</div>
+<div class="flex h-full shrink-0 items-start pt-1">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Notification Item 3 -->
+<div class="flex min-h-[72px] items-center gap-4 rounded-xl bg-card-dark p-3">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined text-accent-gold">info</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-base font-medium leading-tight text-text-light">Schedule Change</p>
+<p class="text-sm font-normal leading-tight text-text-dark">Event #5: NLH Turbo has been moved to Table 15.</p>
+<p class="pt-1 text-xs text-text-dark/70">2h ago</p>
+</div>
+<div class="flex h-full shrink-0 items-start pt-1">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Date Grouping -->
+<h2 class="py-2 pt-4 text-sm font-bold uppercase tracking-wider text-text-dark">Yesterday</h2>
+<!-- Notification Item 4 -->
+<div class="flex min-h-[72px] items-center gap-4 rounded-xl bg-card-dark/60 p-3">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-accent-gold/60">emoji_events</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-base font-medium leading-tight text-text-light/80">Results Available</p>
+<p class="text-sm font-normal leading-tight text-text-dark/80">Final results for Event #3 are now available.</p>
+<p class="pt-1 text-xs text-text-dark/60">Yesterday</p>
+</div>
+<div class="flex h-full shrink-0 items-start pt-1">
+<!-- No unread indicator -->
+</div>
+</div>
+<!-- Notification Item 5 -->
+<div class="flex min-h-[72px] items-center gap-4 rounded-xl bg-card-dark/60 p-3">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined text-accent-gold/60">article</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-0.5">
+<p class="text-base font-medium leading-tight text-text-light/80">News Update</p>
+<p class="text-sm font-normal leading-tight text-text-dark/80">New article: Interview with the latest bracelet winner.</p>
+<p class="pt-1 text-xs text-text-dark/60">Yesterday</p>
+</div>
+<div class="flex h-full shrink-0 items-start pt-1">
+<!-- No unread indicator -->
+</div>
+</div>
+<!-- Empty State Example (commented out) -->
+<!-- 
+                <div class="flex flex-1 flex-col items-center justify-center text-center py-20">
+                    <span class="material-symbols-outlined text-5xl text-text-dark/50">notifications_off</span>
+                    <p class="mt-4 text-lg font-semibold text-text-light">No New Alerts</p>
+                    <p class="mt-1 text-sm text-text-dark">You're all caught up!</p>
+                </div> 
+                -->
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="sticky bottom-0 mt-4 flex h-20 w-full shrink-0 items-center justify-around border-t border-white/10 bg-background-dark/80 backdrop-blur-sm">
+<a class="flex flex-col items-center gap-1 text-text-dark" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-dark" href="#">
+<span class="material-symbols-outlined text-2xl">stacks</span>
+<span class="text-xs">Series</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-dark" href="#">
+<span class="material-symbols-outlined text-2xl">newspaper</span>
+<span class="text-xs">News</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">notifications_active</span>
+<span class="text-xs font-bold">Alerts</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-dark" href="#">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+<span class="text-xs">More</span>
+</a>
+</nav>
+</div>
+</body></html>

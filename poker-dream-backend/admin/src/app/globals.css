@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Refined Poker-themed color palette */
+    --background: 240 20% 97%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Emerald green - poker table inspired */
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Premium gold accent */
+    --secondary: 43 96% 56%;
+    --secondary-foreground: 240 10% 3.9%;
+
+    /* Subtle backgrounds with depth */
+    --muted: 240 20% 96%;
+    --muted-foreground: 240 5% 45%;
+
+    /* Accent colors */
+    --accent: 158 64% 95%;
+    --accent-foreground: 158 64% 30%;
+
+    /* Destructive (red) */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Refined borders and inputs */
+    --border: 240 20% 92%;
+    --input: 240 20% 94%;
+    --ring: 158 64% 52%;
+    --radius: 0.75rem;
+
+    /* Custom shadow variables */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    /* Rich dark background - poker table felt inspired */
+    --background: 160 15% 7%;
+    --foreground: 0 0% 95%;
+
+    /* Dark cards with subtle green tint */
+    --card: 160 12% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 160 12% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Vibrant emerald green for accents */
+    --primary: 158 74% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Bright gold for premium elements */
+    --secondary: 45 100% 58%;
+    --secondary-foreground: 160 15% 7%;
+
+    /* Muted backgrounds */
+    --muted: 160 10% 14%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent with poker green */
+    --accent: 158 50% 25%;
+    --accent-foreground: 158 80% 75%;
+
+    /* Vibrant red for destructive actions */
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Subtle borders */
+    --border: 160 15% 18%;
+    --input: 160 12% 16%;
+    --ring: 158 74% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Enhanced typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Improved form inputs with focus states */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="url"],
+  input[type="datetime-local"],
+  textarea,
+  select {
+    @apply transition-all duration-200;
+    @apply focus:ring-2 focus:ring-primary/20 focus:border-primary;
+  }
+
+  /* Smooth transitions for interactive elements */
+  button,
+  a {
+    @apply transition-all duration-200;
+  }
+
+  /* Enhanced button hover states */
+  button:not(:disabled):hover {
+    @apply transform scale-[1.02];
+  }
+
+  button:active {
+    @apply transform scale-[0.98];
+  }
+}
+
+@layer components {
+  /* Modern card styles with depth */
+  .card-enhanced {
+    @apply bg-card rounded-xl border border-border/50 shadow-sm;
+    @apply hover:shadow-md transition-shadow duration-300;
+  }
+
+  /* Status badges with refined styles */
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    @apply border backdrop-blur-sm;
+  }
+
+  /* Modern table styles */
+  .table-modern {
+    @apply w-full border-collapse;
+  }
+
+  .table-modern thead {
+    @apply bg-muted/50 backdrop-blur-sm;
+  }
+
+  .table-modern th {
+    @apply px-4 py-3.5 text-left text-sm font-semibold;
+    @apply border-b-2 border-border;
+  }
+
+  .table-modern td {
+    @apply px-4 py-4 text-sm;
+    @apply border-b border-border/50;
+  }
+
+  .table-modern tbody tr {
+    @apply transition-colors duration-150;
+    @apply hover:bg-muted/30;
+  }
+
+  /* Premium button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground;
+    @apply hover:bg-primary/90 active:bg-primary/80;
+    @apply shadow-sm hover:shadow;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground;
+    @apply hover:bg-secondary/90 active:bg-secondary/80;
+    @apply shadow-sm hover:shadow;
+  }
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Poker Dream - Tournament Structure</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#e4212e",
+            "background-light": "#f8f6f6",
+            "background-dark": "#121212",
+            "card-dark": "#1E1E1E",
+            "accent-gold": "#FFC107",
+            "text-secondary-dark": "#888888",
+            "text-primary-dark": "#E0E0E0",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex-1 overflow-y-auto">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start text-text-primary-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] text-center flex-1">Main Event Championship</h1>
+<div class="flex size-12 shrink-0 items-center"></div>
+</header>
+<section class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4">
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-background-light dark:bg-card-dark">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal">Status</p>
+<p class="text-primary tracking-light text-xl font-bold leading-tight">Live</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-background-light dark:bg-card-dark">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal">Prize Pool</p>
+<p class="text-white tracking-light text-xl font-bold leading-tight">$1,000,000</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-background-light dark:bg-card-dark">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal">Start Time</p>
+<p class="text-white tracking-light text-xl font-bold leading-tight">Oct 26, 7 PM</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-4 bg-background-light dark:bg-card-dark">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal">Players</p>
+<p class="text-white tracking-light text-xl font-bold leading-tight">152/300</p>
+</div>
+<div class="flex flex-col col-span-2 gap-2 rounded-lg p-4 bg-background-light dark:bg-card-dark">
+<p class="text-text-secondary-dark text-xs font-medium leading-normal">Buy-in</p>
+<p class="text-white tracking-light text-xl font-bold leading-tight">$500 + $50</p>
+</div>
+</section>
+<nav class="flex px-4 py-3">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-background-light dark:bg-card-dark p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-primary has-[:checked]:text-white text-text-secondary-dark text-sm font-medium leading-normal">
+<span class="truncate">Structure</span>
+<input checked="" class="invisible w-0" name="tournament-tabs" type="radio" value="Structure"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-primary has-[:checked]:text-white text-text-secondary-dark text-sm font-medium leading-normal">
+<span class="truncate">Payouts</span>
+<input class="invisible w-0" name="tournament-tabs" type="radio" value="Payouts"/>
+</label>
+</div>
+</nav>
+<div class="px-4 pb-4">
+<div class="overflow-hidden rounded-lg bg-background-light dark:bg-card-dark">
+<div class="grid grid-cols-12 gap-x-2 bg-background-light dark:bg-background-dark/50 px-4 py-3 text-xs font-bold text-text-secondary-dark uppercase tracking-wider">
+<p class="col-span-2 text-left">Level</p>
+<p class="col-span-3 text-left">Duration</p>
+<p class="col-span-2 text-right">SB</p>
+<p class="col-span-2 text-right">BB</p>
+<p class="col-span-3 text-right">Ante</p>
+</div>
+<div class="divide-y divide-white/5 text-sm text-text-primary-dark">
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3">
+<p class="col-span-2 text-left font-medium">1</p>
+<p class="col-span-3 text-left text-text-secondary-dark">20 mins</p>
+<p class="col-span-2 text-right">25</p>
+<p class="col-span-2 text-right">50</p>
+<p class="col-span-3 text-right">-</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3">
+<p class="col-span-2 text-left font-medium">2</p>
+<p class="col-span-3 text-left text-text-secondary-dark">20 mins</p>
+<p class="col-span-2 text-right">50</p>
+<p class="col-span-2 text-right">100</p>
+<p class="col-span-3 text-right">-</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3 bg-primary/20 ring-1 ring-inset ring-primary/50 text-white">
+<p class="col-span-2 text-left font-bold text-accent-gold">3</p>
+<p class="col-span-3 text-left font-semibold text-accent-gold">20 mins</p>
+<p class="col-span-2 text-right font-semibold">100</p>
+<p class="col-span-2 text-right font-semibold">200</p>
+<p class="col-span-3 text-right font-semibold">-</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3 bg-accent-gold/10 text-accent-gold">
+<p class="col-span-12 text-center font-bold">BREAK (15 MINS)</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3">
+<p class="col-span-2 text-left font-medium">4</p>
+<p class="col-span-3 text-left text-text-secondary-dark">20 mins</p>
+<p class="col-span-2 text-right">150</p>
+<p class="col-span-2 text-right">300</p>
+<p class="col-span-3 text-right">25</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3">
+<p class="col-span-2 text-left font-medium">5</p>
+<p class="col-span-3 text-left text-text-secondary-dark">20 mins</p>
+<p class="col-span-2 text-right">200</p>
+<p class="col-span-2 text-right">400</p>
+<p class="col-span-3 text-right">50</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3">
+<p class="col-span-2 text-left font-medium">6</p>
+<p class="col-span-3 text-left text-text-secondary-dark">25 mins</p>
+<p class="col-span-2 text-right">300</p>
+<p class="col-span-2 text-right">600</p>
+<p class="col-span-3 text-right">75</p>
+</div>
+<div class="grid grid-cols-12 gap-x-2 px-4 py-3">
+<p class="col-span-2 text-left font-medium">7</p>
+<p class="col-span-3 text-left text-text-secondary-dark">25 mins</p>
+<p class="col-span-2 text-right">400</p>
+<p class="col-span-2 text-right">800</p>
+<p class="col-span-3 text-right">100</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="flex items-center border-t border-white/10 bg-background-light dark:bg-card-dark px-2 pb-3 pt-2 sticky bottom-0 z-10">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center filled">home</span>
+<p class="text-xs font-bold leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center">emoji_events</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Series</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center">feed</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">News</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center">notifications</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Alerts</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined flex h-8 items-center justify-center">more_horiz</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">More</p>
+</a>
+</footer>
+</div>
+
+</body></html>
