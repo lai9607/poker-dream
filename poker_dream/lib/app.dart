@@ -5,7 +5,7 @@ import 'features/series/presentation/screens/series_screen.dart';
 import 'features/news/presentation/screens/news_screen.dart';
 import 'features/alerts/presentation/screens/alerts_screen.dart';
 import 'features/more/presentation/screens/more_screen.dart';
-import 'shared/widgets/bottom_nav_bar.dart';
+import 'shared/widgets/poker_chip_dock.dart';
 
 class PokerDreamApp extends StatelessWidget {
   const PokerDreamApp({super.key});
@@ -49,9 +49,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: _onTabTapped,
+      bottomNavigationBar: PokerChipDock(
+        index: _currentIndex,
+        onChanged: _onTabTapped,
+        labels: const ['Lobby', 'Events', 'News', 'Alerts', 'More'],
       ),
     );
   }

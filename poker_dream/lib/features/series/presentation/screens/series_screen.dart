@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
+import '../../../../shared/widgets/neon_components.dart';
 import '../../../tournaments/models/tournament_model.dart';
 import '../../../tournaments/providers/tournament_providers.dart';
 
@@ -39,7 +40,7 @@ class _SeriesScreenState extends ConsumerState<SeriesScreen> {
             ),
             const SizedBox(width: 12),
             Text(
-              'Series',
+              'Events',
               style: AppTextStyles.heading3,
             ),
             const Spacer(),
@@ -231,102 +232,83 @@ class _TournamentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.cardDark,
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.charcoal,
+        borderRadius: BorderRadius.circular(18), // More rounded
+        border: Border.all(color: AppColors.borderSubtle),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Tournament Image
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-              color: AppColors.componentDark,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(12),
-              ),
-              image: tournament.bannerImageUrl != null
-                  ? DecorationImage(
-                      image: NetworkImage(tournament.bannerImageUrl!),
-                      fit: BoxFit.cover,
-                    )
-                  : null,
+          // Tournament Image (taller)
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(18),
             ),
-            child: tournament.bannerImageUrl == null
-                ? Center(
-                    child: Icon(
-                      Icons.emoji_events,
-                      size: 48,
-                      color: AppColors.textMuted.withValues(alpha: 0.3),
-                    ),
+            child: tournament.bannerImageUrl != null
+                ? Image.network(
+                    tournament.bannerImageUrl!,
+                    height: 170, // Taller!
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => _buildPlaceholder(),
                   )
-                : null,
+                : _buildPlaceholder(),
           ),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: Text(
                         tournament.name,
-                        style: AppTextStyles.heading4,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                        ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color:
-                            _getStatusColor(tournament.status).withValues(alpha: 0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        _getStatusLabel(tournament.status),
-                        style: AppTextStyles.labelSmall.copyWith(
-                          color: _getStatusColor(tournament.status),
-                        ),
-                      ),
+                    // Bordered status badge
+                    NeonStatusBadge(
+                      label: _getStatusLabel(tournament.status),
+                      borderColor: _getStatusColor(tournament.status),
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 Row(
                   children: [
                     const Icon(
-                      Icons.calendar_today,
+                      Icons.calendar_today_outlined,
                       size: 16,
-                      color: AppColors.textMuted,
+                      color: Colors.white70,
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 6),
                     Text(
                       _formatDateRange(tournament.startDate, tournament.endDate),
-                      style: AppTextStyles.bodySmall,
+                      style: const TextStyle(color: Colors.white70),
                     ),
                   ],
                 ),
                 if (tournament.location != null) ...[
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 6),
                   Row(
                     children: [
                       const Icon(
-                        Icons.location_on,
+                        Icons.place_outlined,
                         size: 16,
-                        color: AppColors.textMuted,
+                        color: Colors.white70,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 6),
                       Expanded(
                         child: Text(
                           tournament.location!,
-                          style: AppTextStyles.bodySmall,
+                          style: const TextStyle(color: Colors.white70),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -335,29 +317,31 @@ class _TournamentCard extends StatelessWidget {
                   ),
                 ],
                 if (tournament.prizePool != null) ...[
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.attach_money,
-                        size: 16,
-                        color: AppColors.accentGold,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Prize Pool: ${_formatCurrency(tournament.prizePool)}',
-                        style: AppTextStyles.bodySmall.copyWith(
-                          color: AppColors.accentGold,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 12),
+                  // Prize pool meter with gradient!
+                  PrizePoolMeter(
+                    filled: 0.62, // TODO: Calculate based on registration
+                    label: 'Prize Pool: ${_formatCurrency(tournament.prizePool)}',
                   ),
                 ],
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildPlaceholder() {
+    return Container(
+      height: 170,
+      color: AppColors.componentDark,
+      child: const Center(
+        child: Icon(
+          Icons.emoji_events,
+          size: 48,
+          color: Colors.white24,
+        ),
       ),
     );
   }
@@ -376,24 +360,11 @@ class _FilterChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    // Use the neon filter chip component
+    return NeonFilterChip(
+      label: label,
+      isSelected: isSelected,
       onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.accentGold.withValues(alpha: 0.2)
-              : Colors.white.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          label,
-          style: AppTextStyles.labelMedium.copyWith(
-            color: isSelected ? AppColors.accentGold : AppColors.textMuted,
-            height: 1.0,
-          ),
-        ),
-      ),
     );
   }
 }

@@ -8,33 +8,33 @@ import '../constants/app_text_styles.dart';
 class AppTheme {
   AppTheme._();
 
-  /// Dark theme (primary theme for Poker Dream)
+  /// Dark theme (primary theme for Poker Dream) - Neon Casino Style
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
 
-      // Color Scheme
-      colorScheme: ColorScheme.dark(
-        primary: AppColors.primary,
-        primaryContainer: AppColors.primaryVariant,
-        secondary: AppColors.secondary,
-        secondaryContainer: AppColors.accentGold,
-        surface: AppColors.backgroundDark,
-        surfaceContainerHighest: AppColors.cardDark,
-        error: AppColors.error,
-        onPrimary: Colors.white,
+      // Neon Color Scheme
+      colorScheme: const ColorScheme.dark(
+        primary: AppColors.neonGold,
+        primaryContainer: AppColors.componentDark,
+        secondary: AppColors.cerise,
+        secondaryContainer: AppColors.charcoal,
+        surface: AppColors.feltBlack,
+        surfaceContainerHighest: AppColors.charcoal,
+        error: AppColors.cerise,
+        onPrimary: Colors.black,
         onSecondary: Colors.black,
         onSurface: AppColors.textLight,
         onSurfaceVariant: AppColors.textMuted,
       ),
 
-      // Scaffold
-      scaffoldBackgroundColor: AppColors.backgroundDark,
+      // Scaffold - Felt black background
+      scaffoldBackgroundColor: AppColors.feltBlack,
 
-      // AppBar
+      // AppBar - Neon style with felt black background
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.backgroundDark,
+        backgroundColor: AppColors.feltBlack,
         elevation: 0,
         centerTitle: true,
         systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -45,20 +45,22 @@ class AppTheme {
         ),
       ),
 
-      // Card
-      cardTheme: const CardThemeData(
-        color: AppColors.cardDark,
+      // Card - More rounded with neon style
+      cardTheme: CardThemeData(
+        color: AppColors.charcoal,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: const BorderRadius.all(Radius.circular(18)),
+          side: BorderSide(color: AppColors.borderSubtle),
         ),
         margin: EdgeInsets.zero,
+        shadowColor: AppColors.neonGold.withOpacity(0.2),
       ),
 
-      // Bottom Navigation
+      // Bottom Navigation - Neon style
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.backgroundDark.withValues(alpha: 0.9),
-        selectedItemColor: AppColors.accentGold,
+        backgroundColor: AppColors.feltBlack,
+        selectedItemColor: AppColors.neonGold,
         unselectedItemColor: AppColors.textMuted,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
@@ -117,50 +119,57 @@ class AppTheme {
         ),
       ),
 
-      // Button Themes
+      // Button Themes - Neon style with rounded corners
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          backgroundColor: AppColors.neonGold,
+          foregroundColor: Colors.black,
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(999), // Full pill
           ),
-          textStyle: AppTextStyles.buttonText,
+          textStyle: AppTextStyles.buttonText.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
 
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.primary,
-          side: const BorderSide(color: AppColors.primary, width: 1.5),
+          foregroundColor: AppColors.neonGold,
+          side: const BorderSide(color: AppColors.neonGold, width: 1.5),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(999), // Full pill
           ),
-          textStyle: AppTextStyles.buttonText,
+          textStyle: AppTextStyles.buttonText.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
 
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: AppColors.primary,
+          foregroundColor: AppColors.neonGold,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          textStyle: AppTextStyles.buttonText,
+          textStyle: AppTextStyles.buttonText.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
 
-      // Chip Theme
+      // Chip Theme - Neon style with glow
       chipTheme: ChipThemeData(
-        backgroundColor: Colors.white.withValues(alpha: 0.1),
-        selectedColor: AppColors.accentGold.withValues(alpha: 0.2),
-        disabledColor: AppColors.textMuted.withValues(alpha: 0.1),
+        backgroundColor: AppColors.componentDark,
+        selectedColor: AppColors.componentDark,
+        disabledColor: const Color(0xFF14161A),
         labelStyle: AppTextStyles.chipText,
         secondaryLabelStyle: AppTextStyles.chipText,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        side: BorderSide(color: AppColors.borderSubtle),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(999), // Full pill
         ),
       ),
 
@@ -188,14 +197,14 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.light,
 
-      colorScheme: ColorScheme.light(
-        primary: AppColors.primary,
-        primaryContainer: AppColors.primaryVariant,
-        secondary: AppColors.secondary,
-        secondaryContainer: AppColors.accentGold,
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.neonGold,
+        primaryContainer: AppColors.componentDark,
+        secondary: AppColors.cerise,
+        secondaryContainer: AppColors.charcoal,
         surface: AppColors.backgroundLight,
-        error: AppColors.error,
-        onPrimary: Colors.white,
+        error: AppColors.cerise,
+        onPrimary: Colors.black,
         onSecondary: Colors.black,
         onSurface: Colors.black87,
       ),

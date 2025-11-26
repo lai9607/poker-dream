@@ -1,7 +1,10 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
+import '../../../../shared/widgets/neon_components.dart';
+import '../../../../shared/widgets/command_grid.dart';
 import '../../models/video_highlight_model.dart';
 import '../../models/news_article_model.dart';
 import '../../providers/video_providers.dart';
@@ -108,20 +111,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ),
                           ),
                           const SizedBox(height: 12),
-                          // Page indicator
+                          // Animated pill indicators
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(
                               videos.length,
-                              (index) => Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 4),
-                                width: _currentPage == index ? 24 : 8,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                  color: _currentPage == index
-                                      ? AppColors.accentGold
-                                      : AppColors.textMuted.withValues(alpha: 0.3),
-                                  borderRadius: BorderRadius.circular(4),
+                              (index) => Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 3),
+                                child: AnimatedPill(
+                                  isFilled: _currentPage == index,
                                 ),
                               ),
                             ),
@@ -162,9 +160,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   const SizedBox(height: 32),
 
+                  // Command Grid Section
+                  Text(
+                    'Your Commands',
+                    style: AppTextStyles.heading2,
+                  ),
+                  const SizedBox(height: 8),
+                  const CommandGrid(),
+                  const SizedBox(height: 32),
+
                   // Latest News Section
                   Text(
-                    'Latest News',
+                    'From the Rail',
                     style: AppTextStyles.heading2,
                   ),
                   const SizedBox(height: 8),
@@ -251,108 +258,79 @@ class _VideoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.cardDark,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          // Thumbnail
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              thumbnail,
-              height: 220,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  height: 220,
-                  color: AppColors.componentDark,
-                  child: const Icon(
-                    Icons.play_circle_outline,
-                    size: 64,
-                    color: AppColors.textMuted,
-                  ),
-                );
-              },
-            ),
-          ),
-          // Gradient overlay
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withValues(alpha: 0.7),
-                ],
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(28), // More rounded!
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Stack(
+          children: [
+            // Thumbnail
+            Positioned.fill(
+              child: Image.network(
+                thumbnail,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: AppColors.componentDark,
+                    child: const Icon(
+                      Icons.play_circle_outline,
+                      size: 64,
+                      color: Colors.white24,
+                    ),
+                  );
+                },
               ),
             ),
-          ),
-          // Play button
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppColors.accentGold.withValues(alpha: 0.9),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.play_arrow,
-                color: Colors.black,
-                size: 32,
-              ),
-            ),
-          ),
-          // Duration badge
-          Positioned(
-            top: 12,
-            right: 12,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.7),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Text(
-                duration,
-                style: AppTextStyles.labelSmall.copyWith(
-                  color: AppColors.textLight,
+            // Dramatic vignette overlay
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: AppColors.vignetteGradient(),
                 ),
               ),
             ),
-          ),
-          // Title
-          Positioned(
-            bottom: 12,
-            left: 12,
-            right: 12,
-            child: Text(
-              title,
-              style: AppTextStyles.heading4.copyWith(
-                shadows: [
-                  Shadow(
-                    color: Colors.black.withValues(alpha: 0.8),
-                    blurRadius: 4,
-                  ),
-                ],
+            // Glowing play button with neon halo
+            const Positioned.fill(
+              child: Center(
+                child: NeonPlayButton(),
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-        ],
+            // Duration badge (more rounded)
+            Positioned(
+              right: 12,
+              top: 12,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(.55),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  duration,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ),
+            // Title at bottom
+            Positioned(
+              left: 16,
+              right: 16,
+              bottom: 16,
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -373,82 +351,98 @@ class _NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.cardDark.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: AppColors.componentDark,
-          width: 1,
+    return PressableCard(
+      onTap: () {
+        // TODO: Navigate to news detail
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            AppColors.glowShadow(blur: 24, opacity: 0.20),
+          ],
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(12),
-            ),
-            child: Image.network(
-              image,
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  height: 150,
-                  color: AppColors.componentDark,
-                  child: const Icon(
-                    Icons.article,
-                    size: 48,
-                    color: AppColors.textMuted,
-                  ),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: AspectRatio(
+            aspectRatio: 16 / 10,
+            child: Stack(
               children: [
-                Text(
-                  title,
-                  style: AppTextStyles.heading4,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  description,
-                  style: AppTextStyles.bodySmall.copyWith(
-                    color: AppColors.textMuted,
+                // Full-size background image
+                Positioned.fill(
+                  child: Image.network(
+                    image,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF2A2A2A), Color(0xFF1E1E1E)],
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.article,
+                          size: 64,
+                          color: Colors.white24,
+                        ),
+                      );
+                    },
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.access_time,
-                      size: 14,
-                      color: AppColors.textMuted.withValues(alpha: 0.7),
+                // Gradient overlay for readability
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: AppColors.readabilityGradient(),
                     ),
-                    const SizedBox(width: 4),
-                    Text(
-                      date,
-                      style: AppTextStyles.labelSmall.copyWith(
-                        color: AppColors.textMuted.withValues(alpha: 0.7),
-                      ),
+                  ),
+                ),
+                // Glassmorphic content area
+                Positioned(
+                  left: 12,
+                  right: 12,
+                  bottom: 12,
+                  child: GlassCard(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CategoryPill(text: 'News'),
+                        const SizedBox(height: 8),
+                        Text(
+                          title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.access_time,
+                              size: 16,
+                              color: Colors.white70,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              date,
+                              style: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
