@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPOY - Poker Dream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #e63946;
+            --accent-hover: #d62839;
+            --gold: #c9a227;
+            --text: #ffffff;
+            --text-muted: #8892a0;
+            --table-header: #415a77;
+            --table-row: #1b263b;
+            --table-row-alt: #0d1b2a;
+            --border: #2d3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: var(--accent);
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--secondary);
+            padding: 0 2rem;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.7rem;
+            color: white;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            display: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-menu a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            position: relative;
+            padding: 3rem 2rem;
+            overflow: hidden;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.05"/></svg>') repeat;
+            background-size: 100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .winner-card {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .winner-card.left,
+        .winner-card.right {
+            flex: 1;
+        }
+
+        .winner-photo {
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 10px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-muted);
+            border: 2px solid var(--border);
+            overflow: hidden;
+        }
+
+        .winner-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .winner-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .winner-title {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .winner-year {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .center-content {
+            flex: 2;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .dpoy-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .dpoy-title .dream { color: var(--text); }
+        .dpoy-title .player { color: var(--text); opacity: 0.3; }
+        .dpoy-title .of-the { color: var(--text); opacity: 0.3; }
+        .dpoy-title .year { color: var(--text); }
+
+        .trophy-icon {
+            font-size: 5rem;
+            margin: 1rem 0;
+        }
+
+        .prize-text {
+            background: var(--primary);
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .prize-text h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .prize-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* DPOY Section */
+        .dpoy-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 8px;
+        }
+
+        /* Leaderboard Table */
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .leaderboard-table thead {
+            background: var(--table-header);
+        }
+
+        .leaderboard-table th {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .leaderboard-table th:first-child {
+            width: 80px;
+            text-align: center;
+        }
+
+        .leaderboard-table th:last-child {
+            text-align: right;
+        }
+
+        .leaderboard-table td {
+            padding: 0.875rem 1.5rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .leaderboard-table tr:nth-child(odd) {
+            background: var(--table-row);
+        }
+
+        .leaderboard-table tr:nth-child(even) {
+            background: var(--table-row-alt);
+        }
+
+        .leaderboard-table tr:hover {
+            background: rgba(230, 57, 70, 0.1);
+        }
+
+        .leaderboard-table td:first-child {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .leaderboard-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .country-cell {
+            color: var(--text-muted);
+        }
+
+        .player-name-cell {
+            font-weight: 500;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            width: 36px;
+            height: 36px;
+            background: var(--secondary);
+            border: none;
+            border-radius: 50%;
+            color: var(--text);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .pagination button:hover,
+        .pagination button.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Terms Button */
+        .terms-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.75rem 2rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .terms-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            background: var(--secondary);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .subscribe-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 4px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border);
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            background: var(--primary);
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .subscribe-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .subscribe-form button {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo .logo-icon {
+            margin: 0 auto;
+            width: 60px;
+            height: 60px;
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-tagline span {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .winner-card.left,
+            .winner-card.right {
+                display: none;
+            }
+
+            .dpoy-title {
+                font-size: 2rem;
+            }
+
+            .leaderboard-table th,
+            .leaderboard-table td {
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-form input {
+                border-right: 1px solid var(--border);
+                border-radius: 5px;
+                margin-bottom: 1rem;
+            }
+
+            .subscribe-form button {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        Poker Dream, Dream the Impossible
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span>POKER</span>
+                    <span>DREAM</span>
+                </div>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">PD 19 Malaysia</a></li>
+                <li><a href="tournament.html">Tournament</a></li>
+                <li><a href="#" class="active">DPOY</a></li>
+                <li><a href="#">Live Reports</a></li>
+                <li><a href="#">Gallery <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Information <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a></li>
+                <li><a href="#">Career</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <!-- Left Winner -->
+            <div class="winner-card left">
+                <div class="winner-photo">👤</div>
+                <div class="winner-name">You Jun Hong</div>
+                <div class="winner-title">DREAM PLAYER OF THE YEAR</div>
+                <div class="winner-year">2023</div>
+            </div>
+
+            <!-- Center Content -->
+            <div class="center-content">
+                <div class="dpoy-title">
+                    <span class="dream">DREAM</span> <span class="player">PLAYER</span><br>
+                    <span class="of-the">OF THE</span> <span class="year">YEAR</span>
+                </div>
+                <div class="trophy-icon">🏆</div>
+                <div class="prize-text">
+                    <h3>POKER DREAM TOURNAMENT CREDIT USD 15K</h3>
+                    <p>In January 2025, Poker Dream conducted the Dream Player of the Year (DPOY)<br>
+                    competition to award the top poker player annually.</p>
+                    <p style="margin-top: 0.5rem;">This will be determined by a leaderboard where players gain points by<br>
+                    participating in Poker Dream Tournaments.</p>
+                </div>
+            </div>
+
+            <!-- Right Winner -->
+            <div class="winner-card right">
+                <div class="winner-photo">👤</div>
+                <div class="winner-name">Thoo Ming Ken</div>
+                <div class="winner-title">DREAM PLAYER OF THE YEAR</div>
+                <div class="winner-year">2024</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DPOY Leaderboard -->
+    <div class="dpoy-section">
+        <h1 class="section-title">DPOY</h1>
+
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Country</th>
+                    <th>Player Name</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="country-cell">Singapore</td>
+                    <td class="player-name-cell">Yujian Eugene Zhou</td>
+                    <td>10175.65</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="country-cell">United Kingdom</td>
+                    <td class="player-name-cell">Matthew Paul Belcher</td>
+                    <td>8326.14</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Chin Yu Lim</td>
+                    <td>5155.27</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Ming Ken Thoo</td>
+                    <td>5103.81</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Haohui Ma</td>
+                    <td>4797.76</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Defeng Liu</td>
+                    <td>4376.17</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Ken Hong Tang</td>
+                    <td>4370</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Qingbo Gao</td>
+                    <td>4348.31</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Zhi Jun Sean Ooi</td>
+                    <td>4076.87</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Jeremy Je Min Chan</td>
+                    <td>4032.86</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Wei Xiong Daniel Chin</td>
+                    <td>3818.13</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td class="country-cell">Singapore</td>
+                    <td class="player-name-cell">Nicholas Michael Ng Yi Wan</td>
+                    <td>3769.49</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Chen Shen Chua</td>
+                    <td>3738.85</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Jiapi Teng</td>
+                    <td>3635.68</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Lee Wee Liew</td>
+                    <td>3574.71</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Lei Li</td>
+                    <td>3566.24</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Dong Li</td>
+                    <td>3505.56</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Phua Chern Chze Isaac</td>
+                    <td>3454.96</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Tianhao Zheng</td>
+                    <td>3451.69</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Ledong Zhou</td>
+                    <td>3433.16</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td class="country-cell">Singapore</td>
+                    <td class="player-name-cell">Jun Hao Wu</td>
+                    <td>3378.81</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Jian Yang Teh</td>
+                    <td>3363.23</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Jo Seng Mok</td>
+                    <td>3303.39</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Tingjia Cao</td>
+                    <td>3267.23</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Wai Kiat Lee</td>
+                    <td>3192.15</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Wei Hsiang Yeu</td>
+                    <td>3127.89</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td class="country-cell">Indonesia</td>
+                    <td class="player-name-cell">Rafael Sitopa Sandhy</td>
+                    <td>3115.75</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td class="country-cell">Singapore</td>
+                    <td class="player-name-cell">Kim Wah Chiu</td>
+                    <td>3112.02</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td class="country-cell">Hong Kong</td>
+                    <td class="player-name-cell">Ka Shing Leung</td>
+                    <td>3047.19</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Ee How Ong</td>
+                    <td>3040.38</td>
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Kok Wai Sim</td>
+                    <td>3001.79</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td class="country-cell">Brazil</td>
+                    <td class="player-name-cell">Gustavo Silva Campos</td>
+                    <td>2938.85</td>
+                </tr>
+                <tr>
+                    <td>33</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Hsien Loong Foo</td>
+                    <td>2901.25</td>
+                </tr>
+                <tr>
+                    <td>34</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Ming Hong Teoh</td>
+                    <td>2891.9</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Lei Yu</td>
+                    <td>2882.38</td>
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Tuck Wai Foo</td>
+                    <td>2866.67</td>
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td class="country-cell">Indonesia</td>
+                    <td class="player-name-cell">Halim Rusly</td>
+                    <td>2844.52</td>
+                </tr>
+                <tr>
+                    <td>38</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Chin Wei Lim</td>
+                    <td>2836.8</td>
+                </tr>
+                <tr>
+                    <td>39</td>
+                    <td class="country-cell">Singapore</td>
+                    <td class="player-name-cell">Chung Hwee Sean Tan</td>
+                    <td>2848.62</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Heng Xu</td>
+                    <td>2621.22</td>
+                </tr>
+                <tr>
+                    <td>41</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Xiangyu Yu</td>
+                    <td>2587.11</td>
+                </tr>
+                <tr>
+                    <td>42</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Chee Hoong Yeoh</td>
+                    <td>2547.46</td>
+                </tr>
+                <tr>
+                    <td>43</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Giap Poey Lau</td>
+                    <td>2536.82</td>
+                </tr>
+                <tr>
+                    <td>44</td>
+                    <td class="country-cell">Malaysia</td>
+                    <td class="player-name-cell">Muk Pin Lai</td>
+                    <td>2504.01</td>
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Zhifan Ye</td>
+                    <td>2450.47</td>
+                </tr>
+                <tr>
+                    <td>46</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Junqiang Lyu</td>
+                    <td>2431.6</td>
+                </tr>
+                <tr>
+                    <td>47</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Ranji Mai</td>
+                    <td>2306.04</td>
+                </tr>
+                <tr>
+                    <td>48</td>
+                    <td class="country-cell">Hong Kong</td>
+                    <td class="player-name-cell">Si Ng Pun</td>
+                    <td>2281.47</td>
+                </tr>
+                <tr>
+                    <td>49</td>
+                    <td class="country-cell">China</td>
+                    <td class="player-name-cell">Xiaotong Tu</td>
+                    <td>2268.31</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td class="country-cell">United States</td>
+                    <td class="player-name-cell">Joseph Sanghyun Cheong</td>
+                    <td>2242.59</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+        </div>
+
+        <!-- Terms Button -->
+        <button class="terms-btn">Terms & Conditions</button>
+    </div>
+
+    <!-- Subscribe Section -->
+    <div class="subscribe-section">
+        <h2>SUBSCRIBE NOW</h2>
+        <form class="subscribe-form">
+            <input type="email" placeholder="Your Email">
+            <button type="submit">SIGN UP</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <div class="logo-icon">
+                <span>POKER</span>
+                <span>DREAM</span>
+            </div>
+        </div>
+        <p class="footer-tagline">POKER DREAM, <span>DREAM THE IMPOSSIBLE</span></p>
+
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <p class="footer-copyright">COPYRIGHT 2024. POKER DREAM. ALL RIGHTS RESERVED</p>
+
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+</body>
+</html>

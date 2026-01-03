@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
+import '../../../tools/presentation/screens/tools_hub_screen.dart';
+import '../../../tools/presentation/screens/icm_calculator_screen.dart';
+import '../../../tools/presentation/screens/hand_ranges_screen.dart';
+import '../../../tools/presentation/screens/equity_calculator_screen.dart';
+import '../../../staking/presentation/screens/staking_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -14,9 +19,60 @@ class MoreScreen extends StatelessWidget {
       body: ListView(
         children: [
           const SizedBox(height: 16),
+          // Tools Section
+          _SettingsSection(
+            title: 'Poker Tools',
+            items: [
+              _SettingsItem(
+                icon: Icons.build,
+                title: 'Tools Hub',
+                subtitle: 'All poker tools in one place',
+                onTap: () => _navigate(context, const ToolsHubScreen()),
+              ),
+              _SettingsItem(
+                icon: Icons.calculate,
+                title: 'ICM Calculator',
+                subtitle: 'Calculate deal equity',
+                onTap: () => _navigate(context, const ICMCalculatorScreen()),
+              ),
+              _SettingsItem(
+                icon: Icons.grid_on,
+                title: 'Hand Ranges',
+                subtitle: 'Build custom hand ranges',
+                onTap: () => _navigate(context, const HandRangesScreen()),
+              ),
+              _SettingsItem(
+                icon: Icons.percent,
+                title: 'Equity Calculator',
+                subtitle: 'Hand vs hand odds',
+                onTap: () => _navigate(context, const EquityCalculatorScreen()),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          // Marketplace Section
+          _SettingsSection(
+            title: 'Marketplace',
+            items: [
+              _SettingsItem(
+                icon: Icons.handshake,
+                title: 'Staking',
+                subtitle: 'Buy & sell tournament action',
+                onTap: () => _navigate(context, const StakingScreen()),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          // Settings Section
           _SettingsSection(
             title: 'Settings',
             items: [
+              _SettingsItem(
+                icon: Icons.person_outline,
+                title: 'Account',
+                subtitle: 'Manage your profile',
+                onTap: () {},
+              ),
               _SettingsItem(
                 icon: Icons.language,
                 title: 'Language',
@@ -72,13 +128,20 @@ class MoreScreen extends StatelessWidget {
           const SizedBox(height: 32),
           Center(
             child: Text(
-              'Version 1.0.0',
+              'Version 2.0.0',
               style: AppTextStyles.bodySmall,
             ),
           ),
           const SizedBox(height: 32),
         ],
       ),
+    );
+  }
+
+  void _navigate(BuildContext context, Widget screen) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => screen),
     );
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'features/home/presentation/screens/home_screen.dart';
 import 'features/series/presentation/screens/series_screen.dart';
-import 'features/news/presentation/screens/news_screen.dart';
-import 'features/alerts/presentation/screens/alerts_screen.dart';
+import 'features/my_poker/presentation/screens/my_poker_screen.dart';
+import 'features/community/presentation/screens/community_screen.dart';
 import 'features/more/presentation/screens/more_screen.dart';
 import 'shared/widgets/poker_chip_dock.dart';
 
@@ -34,8 +34,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = const [
     HomeScreen(),
     SeriesScreen(),
-    NewsScreen(),
-    AlertsScreen(),
+    MyPokerScreen(),
+    CommunityScreen(),
     MoreScreen(),
   ];
 
@@ -52,7 +52,7 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: PokerChipDock(
         index: _currentIndex,
         onChanged: _onTabTapped,
-        labels: const ['Lobby', 'Events', 'News', 'Alerts', 'More'],
+        labels: const ['Home', 'Events', 'My Poker', 'Community', 'More'],
       ),
     );
   }

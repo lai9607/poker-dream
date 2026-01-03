@@ -1,14 +1,12 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../shared/widgets/neon_components.dart';
 import '../../../../shared/widgets/command_grid.dart';
-import '../../models/video_highlight_model.dart';
-import '../../models/news_article_model.dart';
 import '../../providers/video_providers.dart';
 import '../../providers/news_providers.dart';
+import '../../../alerts/presentation/screens/alerts_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -47,6 +45,49 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   fit: BoxFit.contain,
                 ),
                 const Spacer(),
+                // Alerts Icon with Badge
+                Stack(
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.notifications_outlined,
+                        size: 28,
+                        color: AppColors.textLight,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const AlertsScreen()),
+                        );
+                      },
+                    ),
+                    // Notification badge
+                    Positioned(
+                      right: 8,
+                      top: 8,
+                      child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          color: AppColors.cerise,
+                          shape: BoxShape.circle,
+                        ),
+                        constraints: const BoxConstraints(
+                          minWidth: 16,
+                          minHeight: 16,
+                        ),
+                        child: const Text(
+                          '3',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 IconButton(
                   icon: const Icon(
                     Icons.account_circle,
