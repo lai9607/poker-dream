@@ -14,6 +14,12 @@ import tournamentRoutes from './modules/tournaments/tournaments.routes';
 import newsRoutes from './modules/news/news.routes';
 import videoRoutes from './modules/videos/videos.routes';
 import uploadRoutes from './modules/upload/upload.routes';
+import playerRoutes from './modules/players/players.routes';
+import standingRoutes from './modules/standings/standings.routes';
+import sponsorRoutes from './modules/sponsors/sponsors.routes';
+import galleryRoutes from './modules/galleries/galleries.routes';
+import newsletterRoutes from './modules/newsletter/newsletter.routes';
+import contactRoutes from './modules/contact/contact.routes';
 
 const app: Application = express();
 
@@ -67,11 +73,12 @@ app.use('/api/tournaments', tournamentRoutes);
 app.use('/api/news', newsRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/upload', uploadRoutes);
-// app.use('/api/players', playerRoutes);
-// app.use('/api/standings', standingRoutes);
-// app.use('/api/alerts', alertRoutes);
-// app.use('/api/users', userRoutes);
-// app.use('/api/sponsors', sponsorRoutes);
+app.use('/api/players', playerRoutes);
+app.use('/api/standings', standingRoutes);
+app.use('/api/sponsors', sponsorRoutes);
+app.use('/api/galleries', galleryRoutes);
+app.use('/api/newsletter', newsletterRoutes);
+app.use('/api/contact', contactRoutes);
 
 // 404 handler
 app.use(notFoundHandler);
