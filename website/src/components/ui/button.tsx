@@ -1,7 +1,6 @@
 "use client";
 
-import { forwardRef, ButtonHTMLAttributes } from "react";
-import { cn } from "@/lib/utils";
+import { forwardRef, ButtonHTMLAttributes, CSSProperties } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "gold";
@@ -18,48 +17,93 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading = false,
       disabled,
       children,
+      style,
       ...props
     },
     ref
   ) => {
-    const baseStyles =
-      "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--background)] disabled:opacity-50 disabled:cursor-not-allowed";
-
-    const variants = {
-      primary:
-        "bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)] focus:ring-[var(--primary)]",
-      secondary:
-        "bg-[var(--surface)] text-white hover:bg-[var(--surface-hover)] focus:ring-[var(--border)]",
-      outline:
-        "border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white focus:ring-[var(--primary)]",
-      ghost:
-        "text-[var(--foreground-secondary)] hover:text-white hover:bg-[var(--surface)] focus:ring-[var(--border)]",
-      gold: "bg-[var(--gold)] text-black hover:bg-[var(--gold-dark)] focus:ring-[var(--gold)]",
+    const baseStyles: CSSProperties = {
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontWeight: 600,
+      borderRadius: "8px",
+      transition: "all 0.2s",
+      cursor: disabled || isLoading ? "not-allowed" : "pointer",
+      opacity: disabled || isLoading ? 0.5 : 1,
+      border: "none",
     };
 
-    const sizes = {
-      sm: "px-3 py-1.5 text-sm",
-      md: "px-5 py-2.5 text-base",
-      lg: "px-8 py-3.5 text-lg",
+    const variantStyles: Record<string, CSSProperties> = {
+      primary: {
+        background: "linear-gradient(135deg, #E53935 0%, #C62828 100%)",
+        color: "#fff",
+      },
+      secondary: {
+        background: "#1E1E1E",
+        color: "#fff",
+      },
+      outline: {
+        background: "transparent",
+        border: "2px solid #E53935",
+        color: "#E53935",
+      },
+      ghost: {
+        background: "transparent",
+        color: "#888",
+      },
+      gold: {
+        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+        color: "#000",
+      },
+    };
+
+    const sizeStyles: Record<string, CSSProperties> = {
+      sm: {
+        padding: "8px 16px",
+        fontSize: "14px",
+      },
+      md: {
+        padding: "12px 24px",
+        fontSize: "16px",
+      },
+      lg: {
+        padding: "16px 32px",
+        fontSize: "18px",
+      },
+    };
+
+    const combinedStyles: CSSProperties = {
+      ...baseStyles,
+      ...variantStyles[variant],
+      ...sizeStyles[size],
+      ...style,
     };
 
     return (
       <button
         ref={ref}
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
+        className={className}
+        style={combinedStyles}
         disabled={disabled || isLoading}
         {...props}
       >
         {isLoading ? (
           <>
             <svg
-              className="animate-spin -ml-1 mr-2 h-4 w-4"
+              style={{
+                animation: "spin 1s linear infinite",
+                marginLeft: "-4px",
+                marginRight: "8px",
+                width: "16px",
+                height: "16px",
+              }}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
             >
               <circle
-                className="opacity-25"
+                style={{ opacity: 0.25 }}
                 cx="12"
                 cy="12"
                 r="10"
@@ -67,7 +111,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 strokeWidth="4"
               />
               <path
-                className="opacity-75"
+                style={{ opacity: 0.75 }}
                 fill="currentColor"
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               />

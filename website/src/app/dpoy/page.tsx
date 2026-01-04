@@ -109,62 +109,76 @@ export default function DPOYPage() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section style={{ position: "relative", padding: "80px 0", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <div
-            className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=1920')",
+              position: "absolute",
+              inset: 0,
+              backgroundImage: "url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=1920')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[var(--background)]" />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6), #0A0A0A)" }} />
         </div>
 
-        <div className="container relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[var(--gold)] bg-[var(--gold)]/10 rounded-full border border-[var(--gold)]/30">
+        <div className="container" style={{ position: "relative", zIndex: 10 }}>
+          <div style={{ textAlign: "center", maxWidth: "768px", margin: "0 auto 48px" }}>
+            <span
+              style={{
+                display: "inline-block",
+                padding: "8px 16px",
+                marginBottom: "24px",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#FFD700",
+                background: "rgba(255, 215, 0, 0.1)",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255, 215, 0, 0.3)",
+              }}
+            >
               {currentYear} Season
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <h1 style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, marginBottom: "16px", color: "#fff" }}>
               Dream Player of the Year
             </h1>
-            <p className="text-xl text-[var(--foreground-secondary)]">
+            <p style={{ fontSize: "20px", color: "#888", lineHeight: 1.6 }}>
               The race for poker glory. Track the top players competing for the
               prestigious DPOY title.
             </p>
           </div>
 
           {/* Top 3 Podium */}
-          <div className="flex flex-col md:flex-row items-end justify-center gap-4 max-w-4xl mx-auto">
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", justifyContent: "center", gap: "16px", maxWidth: "896px", margin: "0 auto" }} className="md:flex-row">
             {/* 2nd Place */}
-            <div className="order-2 md:order-1 w-full md:w-1/3">
-              <Card className="bg-gradient-to-b from-gray-600/20 to-gray-800/20 border-gray-500/30 text-center">
-                <CardContent className="pt-6 pb-8">
-                  <div className="relative inline-block mb-4">
+            <div style={{ order: 2, width: "100%" }} className="md:order-1 md:w-1/3">
+              <Card style={{ background: "linear-gradient(to bottom, rgba(75, 85, 99, 0.2), rgba(31, 41, 55, 0.2))", border: "1px solid rgba(107, 114, 128, 0.3)", textAlign: "center" }}>
+                <CardContent style={{ paddingTop: "24px", paddingBottom: "32px" }}>
+                  <div style={{ position: "relative", display: "inline-block", marginBottom: "16px" }}>
                     <img
                       src={topThree[1]?.player.profileImage}
                       alt={topThree[1]?.player.name}
-                      className="w-20 h-20 rounded-full object-cover mx-auto border-4 border-gray-400"
+                      style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", margin: "0 auto", border: "4px solid #9CA3AF", display: "block" }}
                     />
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center text-black font-bold">
+                    <div style={{ position: "absolute", bottom: "-8px", left: "50%", transform: "translateX(-50%)", width: "32px", height: "32px", background: "#9CA3AF", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "#000", fontWeight: 700 }}>
                       2
                     </div>
                   </div>
-                  <h3 className="font-bold text-lg mb-1">{topThree[1]?.player.name}</h3>
-                  <div className="flex items-center justify-center gap-1 mb-3">
+                  <h3 style={{ fontWeight: 700, fontSize: "18px", marginBottom: "4px", color: "#fff" }}>{topThree[1]?.player.name}</h3>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", marginBottom: "12px" }}>
                     <img
                       src={`https://flagcdn.com/24x18/${topThree[1]?.player.countryCode.toLowerCase()}.png`}
                       alt=""
-                      className="w-5 h-3.5"
+                      style={{ width: "20px", height: "14px" }}
                     />
-                    <span className="text-sm text-[var(--foreground-secondary)]">
+                    <span style={{ fontSize: "14px", color: "#888" }}>
                       {topThree[1]?.player.country}
                     </span>
                   </div>
-                  <p className="text-2xl font-bold text-gray-300">
+                  <p style={{ fontSize: "24px", fontWeight: 700, color: "#D1D5DB" }}>
                     {formatNumber(topThree[1]?.points || 0)} pts
                   </p>
                 </CardContent>
@@ -172,32 +186,32 @@ export default function DPOYPage() {
             </div>
 
             {/* 1st Place */}
-            <div className="order-1 md:order-2 w-full md:w-1/3">
-              <Card className="bg-gradient-to-b from-[var(--gold)]/20 to-amber-900/20 border-[var(--gold)]/30 text-center transform md:scale-110">
-                <CardContent className="pt-8 pb-10">
-                  <Trophy className="w-12 h-12 text-[var(--gold)] mx-auto mb-4" />
-                  <div className="relative inline-block mb-4">
+            <div style={{ order: 1, width: "100%" }} className="md:order-2 md:w-1/3 md:scale-110">
+              <Card style={{ background: "linear-gradient(to bottom, rgba(255, 215, 0, 0.2), rgba(180, 83, 9, 0.2))", border: "1px solid rgba(255, 215, 0, 0.3)", textAlign: "center" }}>
+                <CardContent style={{ paddingTop: "32px", paddingBottom: "40px" }}>
+                  <Trophy style={{ width: "48px", height: "48px", color: "#FFD700", margin: "0 auto 16px" }} />
+                  <div style={{ position: "relative", display: "inline-block", marginBottom: "16px" }}>
                     <img
                       src={topThree[0]?.player.profileImage}
                       alt={topThree[0]?.player.name}
-                      className="w-24 h-24 rounded-full object-cover mx-auto border-4 border-[var(--gold)]"
+                      style={{ width: "96px", height: "96px", borderRadius: "50%", objectFit: "cover", margin: "0 auto", border: "4px solid #FFD700", display: "block" }}
                     />
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-10 bg-[var(--gold)] rounded-full flex items-center justify-center text-black font-bold text-lg">
+                    <div style={{ position: "absolute", bottom: "-8px", left: "50%", transform: "translateX(-50%)", width: "40px", height: "40px", background: "#FFD700", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "#000", fontWeight: 700, fontSize: "18px" }}>
                       1
                     </div>
                   </div>
-                  <h3 className="font-bold text-xl mb-1">{topThree[0]?.player.name}</h3>
-                  <div className="flex items-center justify-center gap-1 mb-3">
+                  <h3 style={{ fontWeight: 700, fontSize: "20px", marginBottom: "4px", color: "#fff" }}>{topThree[0]?.player.name}</h3>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", marginBottom: "12px" }}>
                     <img
                       src={`https://flagcdn.com/24x18/${topThree[0]?.player.countryCode.toLowerCase()}.png`}
                       alt=""
-                      className="w-5 h-3.5"
+                      style={{ width: "20px", height: "14px" }}
                     />
-                    <span className="text-sm text-[var(--foreground-secondary)]">
+                    <span style={{ fontSize: "14px", color: "#888" }}>
                       {topThree[0]?.player.country}
                     </span>
                   </div>
-                  <p className="text-3xl font-bold text-[var(--gold)]">
+                  <p style={{ fontSize: "30px", fontWeight: 700, color: "#FFD700" }}>
                     {formatNumber(topThree[0]?.points || 0)} pts
                   </p>
                 </CardContent>
@@ -205,31 +219,31 @@ export default function DPOYPage() {
             </div>
 
             {/* 3rd Place */}
-            <div className="order-3 w-full md:w-1/3">
-              <Card className="bg-gradient-to-b from-amber-700/20 to-amber-900/20 border-amber-600/30 text-center">
-                <CardContent className="pt-6 pb-8">
-                  <div className="relative inline-block mb-4">
+            <div style={{ order: 3, width: "100%" }} className="md:w-1/3">
+              <Card style={{ background: "linear-gradient(to bottom, rgba(180, 83, 9, 0.2), rgba(120, 53, 15, 0.2))", border: "1px solid rgba(217, 119, 6, 0.3)", textAlign: "center" }}>
+                <CardContent style={{ paddingTop: "24px", paddingBottom: "32px" }}>
+                  <div style={{ position: "relative", display: "inline-block", marginBottom: "16px" }}>
                     <img
                       src={topThree[2]?.player.profileImage}
                       alt={topThree[2]?.player.name}
-                      className="w-20 h-20 rounded-full object-cover mx-auto border-4 border-amber-600"
+                      style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", margin: "0 auto", border: "4px solid #D97706", display: "block" }}
                     />
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center text-black font-bold">
+                    <div style={{ position: "absolute", bottom: "-8px", left: "50%", transform: "translateX(-50%)", width: "32px", height: "32px", background: "#D97706", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "#000", fontWeight: 700 }}>
                       3
                     </div>
                   </div>
-                  <h3 className="font-bold text-lg mb-1">{topThree[2]?.player.name}</h3>
-                  <div className="flex items-center justify-center gap-1 mb-3">
+                  <h3 style={{ fontWeight: 700, fontSize: "18px", marginBottom: "4px", color: "#fff" }}>{topThree[2]?.player.name}</h3>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", marginBottom: "12px" }}>
                     <img
                       src={`https://flagcdn.com/24x18/${topThree[2]?.player.countryCode.toLowerCase()}.png`}
                       alt=""
-                      className="w-5 h-3.5"
+                      style={{ width: "20px", height: "14px" }}
                     />
-                    <span className="text-sm text-[var(--foreground-secondary)]">
+                    <span style={{ fontSize: "14px", color: "#888" }}>
                       {topThree[2]?.player.country}
                     </span>
                   </div>
-                  <p className="text-2xl font-bold text-amber-500">
+                  <p style={{ fontSize: "24px", fontWeight: 700, color: "#F59E0B" }}>
                     {formatNumber(topThree[2]?.points || 0)} pts
                   </p>
                 </CardContent>
@@ -240,32 +254,32 @@ export default function DPOYPage() {
       </section>
 
       {/* How Points Work */}
-      <section className="py-16 bg-[var(--background-secondary)]">
+      <section style={{ padding: "64px 0", background: "#121212" }}>
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold">How DPOY Points Work</h2>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2 style={{ fontSize: "24px", fontWeight: 700, color: "#fff" }}>How DPOY Points Work</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-[var(--surface)] rounded-xl p-6 text-center">
-              <Trophy className="w-10 h-10 text-[var(--gold)] mx-auto mb-4" />
-              <h3 className="font-bold mb-2">Tournament Finishes</h3>
-              <p className="text-sm text-[var(--foreground-secondary)]">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "24px", maxWidth: "896px", margin: "0 auto" }} className="md:grid-cols-3">
+            <div style={{ background: "#1E1E1E", borderRadius: "12px", padding: "24px", textAlign: "center" }}>
+              <Trophy style={{ width: "40px", height: "40px", color: "#FFD700", margin: "0 auto 16px" }} />
+              <h3 style={{ fontWeight: 700, marginBottom: "8px", color: "#fff" }}>Tournament Finishes</h3>
+              <p style={{ fontSize: "14px", color: "#888" }}>
                 Earn points based on your final position in Poker Dream events.
                 Higher finishes = more points.
               </p>
             </div>
-            <div className="bg-[var(--surface)] rounded-xl p-6 text-center">
-              <Medal className="w-10 h-10 text-[var(--gold)] mx-auto mb-4" />
-              <h3 className="font-bold mb-2">Event Multipliers</h3>
-              <p className="text-sm text-[var(--foreground-secondary)]">
+            <div style={{ background: "#1E1E1E", borderRadius: "12px", padding: "24px", textAlign: "center" }}>
+              <Medal style={{ width: "40px", height: "40px", color: "#FFD700", margin: "0 auto 16px" }} />
+              <h3 style={{ fontWeight: 700, marginBottom: "8px", color: "#fff" }}>Event Multipliers</h3>
+              <p style={{ fontSize: "14px", color: "#888" }}>
                 Main Events and High Rollers offer bonus multipliers on points
                 earned.
               </p>
             </div>
-            <div className="bg-[var(--surface)] rounded-xl p-6 text-center">
-              <TrendingUp className="w-10 h-10 text-[var(--gold)] mx-auto mb-4" />
-              <h3 className="font-bold mb-2">Consistency Bonus</h3>
-              <p className="text-sm text-[var(--foreground-secondary)]">
+            <div style={{ background: "#1E1E1E", borderRadius: "12px", padding: "24px", textAlign: "center" }}>
+              <TrendingUp style={{ width: "40px", height: "40px", color: "#FFD700", margin: "0 auto 16px" }} />
+              <h3 style={{ fontWeight: 700, marginBottom: "8px", color: "#fff" }}>Consistency Bonus</h3>
+              <p style={{ fontSize: "14px", color: "#888" }}>
                 Play more events throughout the season to earn consistency bonus
                 points.
               </p>
@@ -275,80 +289,75 @@ export default function DPOYPage() {
       </section>
 
       {/* Full Leaderboard */}
-      <section className="py-16">
+      <section style={{ padding: "64px 0" }}>
         <div className="container">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold">Full Leaderboard</h2>
-            <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-[var(--foreground-muted)]" />
-              <span className="text-[var(--foreground-secondary)]">{currentYear} Season</span>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "32px" }}>
+            <h2 style={{ fontSize: "24px", fontWeight: 700, color: "#fff" }}>Full Leaderboard</h2>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Calendar style={{ width: "20px", height: "20px", color: "#666" }} />
+              <span style={{ color: "#888" }}>{currentYear} Season</span>
             </div>
           </div>
 
-          <div className="bg-[var(--surface)] rounded-xl overflow-hidden">
-            <table className="w-full">
-              <thead className="bg-[var(--background-secondary)]">
+          <div style={{ background: "#1E1E1E", borderRadius: "12px", overflow: "hidden" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead style={{ background: "#121212" }}>
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold">Rank</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold">Player</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">Events</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">Best Finish</th>
-                  <th className="px-6 py-4 text-right text-sm font-semibold">Points</th>
+                  <th style={{ padding: "16px 24px", textAlign: "left", fontSize: "14px", fontWeight: 600, color: "#fff" }}>Rank</th>
+                  <th style={{ padding: "16px 24px", textAlign: "left", fontSize: "14px", fontWeight: 600, color: "#fff" }}>Player</th>
+                  <th style={{ padding: "16px 24px", textAlign: "center", fontSize: "14px", fontWeight: 600, color: "#fff" }}>Events</th>
+                  <th style={{ padding: "16px 24px", textAlign: "center", fontSize: "14px", fontWeight: 600, color: "#fff" }}>Best Finish</th>
+                  <th style={{ padding: "16px 24px", textAlign: "right", fontSize: "14px", fontWeight: 600, color: "#fff" }}>Points</th>
                 </tr>
               </thead>
               <tbody>
                 {allEntries.slice(0, 50).map((entry) => (
                   <tr
                     key={entry.rank}
-                    className="border-t border-[var(--border)] hover:bg-[var(--surface-hover)]"
+                    style={{ borderTop: "1px solid #333" }}
                   >
-                    <td className="px-6 py-4">
+                    <td style={{ padding: "16px 24px" }}>
                       <span
-                        className={`font-bold ${
-                          entry.rank === 1
-                            ? "text-[var(--gold)]"
-                            : entry.rank === 2
-                            ? "text-gray-400"
-                            : entry.rank === 3
-                            ? "text-amber-600"
-                            : ""
-                        }`}
+                        style={{
+                          fontWeight: 700,
+                          color: entry.rank === 1 ? "#FFD700" : entry.rank === 2 ? "#9CA3AF" : entry.rank === 3 ? "#D97706" : "#fff"
+                        }}
                       >
                         #{entry.rank}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[var(--background)] flex items-center justify-center overflow-hidden">
+                    <td style={{ padding: "16px 24px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#0A0A0A", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
                           {entry.player.profileImage ? (
                             <img
                               src={entry.player.profileImage}
                               alt={entry.player.name}
-                              className="w-full h-full object-cover"
+                              style={{ width: "100%", height: "100%", objectFit: "cover" }}
                             />
                           ) : (
-                            <span className="text-sm font-bold">
+                            <span style={{ fontSize: "14px", fontWeight: 700, color: "#fff" }}>
                               {entry.player.name.charAt(0)}
                             </span>
                           )}
                         </div>
                         <div>
-                          <p className="font-medium">{entry.player.name}</p>
-                          <div className="flex items-center gap-1">
+                          <p style={{ fontWeight: 500, color: "#fff" }}>{entry.player.name}</p>
+                          <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                             <img
                               src={`https://flagcdn.com/16x12/${entry.player.countryCode.toLowerCase()}.png`}
                               alt=""
-                              className="w-4 h-3"
+                              style={{ width: "16px", height: "12px" }}
                             />
-                            <span className="text-xs text-[var(--foreground-muted)]">
+                            <span style={{ fontSize: "12px", color: "#666" }}>
                               {entry.player.country}
                             </span>
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-center">{entry.eventsPlayed}</td>
-                    <td className="px-6 py-4 text-center">
+                    <td style={{ padding: "16px 24px", textAlign: "center", color: "#fff" }}>{entry.eventsPlayed}</td>
+                    <td style={{ padding: "16px 24px", textAlign: "center", color: "#fff" }}>
                       {entry.bestFinish === 1 ? (
                         <Badge variant="gold" size="sm">
                           1st
@@ -357,7 +366,7 @@ export default function DPOYPage() {
                         <span>{entry.bestFinish}th</span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-right font-bold">
+                    <td style={{ padding: "16px 24px", textAlign: "right", fontWeight: 700, color: "#fff" }}>
                       {formatNumber(entry.points)}
                     </td>
                   </tr>
@@ -367,15 +376,15 @@ export default function DPOYPage() {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-center items-center gap-4 mt-8">
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "16px", marginTop: "32px" }}>
             <Button variant="outline" size="sm" disabled>
-              <ChevronLeft className="w-4 h-4 mr-1" />
+              <ChevronLeft style={{ width: "16px", height: "16px", marginRight: "4px" }} />
               Previous
             </Button>
-            <span className="text-[var(--foreground-secondary)]">Page 1 of 1</span>
+            <span style={{ color: "#888" }}>Page 1 of 1</span>
             <Button variant="outline" size="sm" disabled>
               Next
-              <ChevronRight className="w-4 h-4 ml-1" />
+              <ChevronRight style={{ width: "16px", height: "16px", marginLeft: "4px" }} />
             </Button>
           </div>
         </div>

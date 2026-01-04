@@ -77,16 +77,28 @@ const pastReports = [
 
 export default function LiveReportsPage() {
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
-      <section className="py-16 bg-[var(--background-secondary)]">
+      <section style={{ padding: "64px 0", background: "#121212" }}>
         <div className="container">
-          <div className="max-w-2xl">
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[var(--gold)] bg-[var(--gold)]/10 rounded-full border border-[var(--gold)]/30">
+          <div style={{ maxWidth: "672px" }}>
+            <span
+              style={{
+                display: "inline-block",
+                padding: "8px 16px",
+                marginBottom: "24px",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#FFD700",
+                background: "rgba(255, 215, 0, 0.1)",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255, 215, 0, 0.3)",
+              }}
+            >
               Tournament Coverage
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Live Reports</h1>
-            <p className="text-xl text-[var(--foreground-secondary)]">
+            <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 700, marginBottom: "16px", color: "#fff" }}>Live Reports</h1>
+            <p style={{ fontSize: "20px", color: "#888", lineHeight: 1.6 }}>
               Follow the action with live updates, chip counts, and key moments
               from ongoing Poker Dream tournaments.
             </p>
@@ -96,51 +108,51 @@ export default function LiveReportsPage() {
 
       {/* Live Now Section */}
       {liveReports.length > 0 && (
-        <section className="py-12">
+        <section style={{ padding: "48px 0" }}>
           <div className="container">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <span className="w-3 h-3 bg-[var(--error)] rounded-full animate-pulse" />
+            <h2 style={{ fontSize: "24px", fontWeight: 700, marginBottom: "24px", display: "flex", alignItems: "center", gap: "8px", color: "#fff" }}>
+              <span style={{ width: "12px", height: "12px", background: "#E53935", borderRadius: "50%" }} />
               Live Now
             </h2>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "24px" }} className="md:grid-cols-2">
               {liveReports.map((report) => (
                 <Link key={report.id} href={`/live-reports/${report.id}`}>
                   <Card
                     hover
                     variant="bordered"
-                    className="h-full border-[var(--primary)]/30"
+                    style={{ height: "100%", borderColor: "rgba(229, 57, 53, 0.3)" }}
                   >
-                    <div className="relative">
+                    <div style={{ position: "relative" }}>
                       <CardImage
                         src={report.imageUrl}
                         alt={report.tournamentName}
                         aspectRatio="16/9"
                       />
-                      <div className="absolute top-4 left-4">
+                      <div style={{ position: "absolute", top: "16px", left: "16px" }}>
                         <Badge variant="live">LIVE</Badge>
                       </div>
-                      <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2">
-                        <p className="text-xs text-[var(--foreground-secondary)]">
+                      <div style={{ position: "absolute", bottom: "16px", right: "16px", background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)", borderRadius: "8px", padding: "8px 12px" }}>
+                        <p style={{ fontSize: "12px", color: "#888" }}>
                           Level {report.currentLevel}
                         </p>
                       </div>
                     </div>
-                    <CardContent className="space-y-4">
-                      <h3 className="text-xl font-bold">{report.tournamentName}</h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-[var(--background)] rounded-lg p-3">
-                          <p className="text-xs text-[var(--foreground-muted)]">
+                    <CardContent style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                      <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#fff" }}>{report.tournamentName}</h3>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
+                        <div style={{ background: "#0A0A0A", borderRadius: "8px", padding: "12px" }}>
+                          <p style={{ fontSize: "12px", color: "#666" }}>
                             Players Left
                           </p>
-                          <p className="text-lg font-bold">
+                          <p style={{ fontSize: "18px", fontWeight: 700, color: "#fff" }}>
                             {report.playersRemaining} / {report.totalEntries}
                           </p>
                         </div>
-                        <div className="bg-[var(--background)] rounded-lg p-3">
-                          <p className="text-xs text-[var(--foreground-muted)]">
+                        <div style={{ background: "#0A0A0A", borderRadius: "8px", padding: "12px" }}>
+                          <p style={{ fontSize: "12px", color: "#666" }}>
                             Last Update
                           </p>
-                          <p className="text-lg font-bold">
+                          <p style={{ fontSize: "18px", fontWeight: 700, color: "#fff" }}>
                             {new Date(report.lastUpdate).toLocaleTimeString("en-US", {
                               hour: "2-digit",
                               minute: "2-digit",
@@ -148,11 +160,11 @@ export default function LiveReportsPage() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-[var(--foreground-secondary)]">
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14px" }}>
+                        <span style={{ color: "#888" }}>
                           Follow live updates
                         </span>
-                        <ChevronRight className="w-4 h-4 text-[var(--primary)]" />
+                        <ChevronRight style={{ width: "16px", height: "16px", color: "#E53935" }} />
                       </div>
                     </CardContent>
                   </Card>
@@ -164,62 +176,64 @@ export default function LiveReportsPage() {
       )}
 
       {/* Past Reports Section */}
-      <section className="py-12 bg-[var(--background-secondary)]">
+      <section style={{ padding: "48px 0", background: "#121212" }}>
         <div className="container">
-          <h2 className="text-2xl font-bold mb-6">Recent Completed Events</h2>
-          <div className="space-y-4">
+          <h2 style={{ fontSize: "24px", fontWeight: 700, marginBottom: "24px", color: "#fff" }}>Recent Completed Events</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {pastReports.map((report) => (
               <Link key={report.id} href={`/live-reports/${report.id}`}>
                 <Card
                   hover
                   variant="bordered"
-                  className="flex flex-col md:flex-row overflow-hidden"
+                  style={{ display: "flex", flexDirection: "column", overflow: "hidden" }}
+                  className="md:flex-row"
                 >
-                  <div className="md:w-64 flex-shrink-0">
+                  <div style={{ flexShrink: 0 }} className="md:w-64">
                     <CardImage
                       src={report.imageUrl}
                       alt={report.tournamentName}
                       aspectRatio="16/9"
-                      className="md:aspect-auto md:h-full"
                     />
                   </div>
-                  <CardContent className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <CardContent style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "16px" }} className="md:flex-row md:items-center">
                     <div>
-                      <Badge variant="default" size="sm" className="mb-2">
-                        COMPLETED
-                      </Badge>
-                      <h3 className="text-xl font-bold mb-2">
+                      <div style={{ marginBottom: "8px" }}>
+                        <Badge variant="default" size="sm">
+                          COMPLETED
+                        </Badge>
+                      </div>
+                      <h3 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "8px", color: "#fff" }}>
                         {report.tournamentName}
                       </h3>
-                      <div className="flex items-center gap-4 text-sm text-[var(--foreground-secondary)]">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
+                      <div style={{ display: "flex", alignItems: "center", gap: "16px", fontSize: "14px", color: "#888" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                          <Calendar style={{ width: "16px", height: "16px" }} />
                           <span>{formatDate(report.date)}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Users className="w-4 h-4" />
+                        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                          <Users style={{ width: "16px", height: "16px" }} />
                           <span>{report.totalEntries} entries</span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <div className="text-right">
-                        <p className="text-sm text-[var(--foreground-muted)]">
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                      <div style={{ textAlign: "right" }}>
+                        <p style={{ fontSize: "14px", color: "#666" }}>
                           Winner
                         </p>
-                        <div className="flex items-center gap-2">
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "flex-end" }}>
                           <img
                             src={`https://flagcdn.com/24x18/${report.winnerCountry.toLowerCase()}.png`}
                             alt=""
-                            className="w-5 h-4"
+                            style={{ width: "20px", height: "16px" }}
                           />
-                          <span className="font-bold">{report.winner}</span>
+                          <span style={{ fontWeight: 700, color: "#fff" }}>{report.winner}</span>
                         </div>
-                        <p className="text-[var(--gold)] font-bold">
+                        <p style={{ color: "#FFD700", fontWeight: 700 }}>
                           RM {(report.prize / 1000).toFixed(0)}K
                         </p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-[var(--foreground-muted)]" />
+                      <ChevronRight style={{ width: "20px", height: "20px", color: "#666" }} />
                     </div>
                   </CardContent>
                 </Card>

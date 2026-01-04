@@ -2,34 +2,38 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, Calendar, Trophy } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar, Trophy } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1511193311914-0346f16efe90?q=80&w=2073')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[var(--background)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
-      </div>
+    <section className="hero-section">
+      {/* Background Image */}
+      <div className="hero-bg-image" />
+      {/* Gradient Overlay */}
+      <div className="hero-overlay" />
 
       {/* Content */}
-      <div className="container relative z-10 pt-20">
+      <div className="container relative z-10 py-32">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[var(--gold)] bg-[var(--gold)]/10 rounded-full border border-[var(--gold)]/30">
+            <span
+              style={{
+                display: "inline-block",
+                padding: "8px 20px",
+                marginBottom: "32px",
+                fontSize: "12px",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#000",
+                background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+                borderRadius: "9999px",
+              }}
+            >
               Asia&apos;s Premier Poker Tournament Series
             </span>
           </motion.div>
@@ -38,19 +42,42 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            style={{
+              fontSize: "clamp(48px, 8vw, 80px)",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              marginBottom: "24px",
+              color: "#fff",
+            }}
           >
-            Where{" "}
-            <span className="text-gradient-primary">Champions</span>
+            Where
             <br />
-            Are Made
+            <span
+              style={{
+                background: "linear-gradient(135deg, #E53935 0%, #FF6B6B 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Champions
+            </span>{" "}
+            Are
+            <br />
+            Made
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-[var(--foreground-secondary)] mb-8 max-w-xl"
+            style={{
+              fontSize: "18px",
+              lineHeight: 1.7,
+              color: "#B3B3B3",
+              marginBottom: "32px",
+              maxWidth: "500px",
+            }}
           >
             Join thousands of players from around the world competing for glory
             and life-changing prizes at Malaysia&apos;s most prestigious poker
@@ -61,19 +88,49 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
+            style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}
           >
             <Link href="/tournaments">
-              <Button size="lg">
-                <Calendar className="w-5 h-5 mr-2" />
+              <button
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "14px 28px",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "#fff",
+                  background: "linear-gradient(135deg, #E53935 0%, #C62828 100%)",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+              >
+                <Calendar style={{ width: "20px", height: "20px" }} />
                 View Tournaments
-              </Button>
+              </button>
             </Link>
             <Link href="/dpoy">
-              <Button variant="outline" size="lg">
-                <Trophy className="w-5 h-5 mr-2" />
+              <button
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "14px 28px",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "#fff",
+                  background: "transparent",
+                  border: "2px solid rgba(255,255,255,0.3)",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  transition: "border-color 0.2s",
+                }}
+              >
+                <Trophy style={{ width: "20px", height: "20px" }} />
                 DPOY Rankings
-              </Button>
+              </button>
             </Link>
           </motion.div>
 
@@ -82,29 +139,56 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-white/10"
+            style={{
+              display: "flex",
+              gap: "48px",
+              marginTop: "48px",
+              paddingTop: "32px",
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+            }}
           >
             <div>
-              <p className="text-3xl md:text-4xl font-bold text-[var(--gold)]">
+              <p
+                style={{
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  color: "#FFD700",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 50+
               </p>
-              <p className="text-sm text-[var(--foreground-secondary)]">
+              <p style={{ fontSize: "14px", color: "#888", marginTop: "4px" }}>
                 Events Per Year
               </p>
             </div>
             <div>
-              <p className="text-3xl md:text-4xl font-bold text-[var(--gold)]">
+              <p
+                style={{
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  color: "#FFD700",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 RM 50M+
               </p>
-              <p className="text-sm text-[var(--foreground-secondary)]">
+              <p style={{ fontSize: "14px", color: "#888", marginTop: "4px" }}>
                 Total Prize Pool
               </p>
             </div>
             <div>
-              <p className="text-3xl md:text-4xl font-bold text-[var(--gold)]">
+              <p
+                style={{
+                  fontSize: "32px",
+                  fontWeight: 700,
+                  color: "#FFD700",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 10K+
               </p>
-              <p className="text-sm text-[var(--foreground-secondary)]">
+              <p style={{ fontSize: "14px", color: "#888", marginTop: "4px" }}>
                 Players Worldwide
               </p>
             </div>
@@ -117,13 +201,33 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        style={{
+          position: "absolute",
+          bottom: "32px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+        <div
+          style={{
+            width: "24px",
+            height: "40px",
+            border: "2px solid rgba(255,255,255,0.2)",
+            borderRadius: "9999px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-3 bg-white/50 rounded-full mt-2"
+            style={{
+              width: "6px",
+              height: "12px",
+              background: "rgba(255,255,255,0.4)",
+              borderRadius: "9999px",
+              marginTop: "8px",
+            }}
           />
         </div>
       </motion.div>

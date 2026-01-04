@@ -155,16 +155,30 @@ export default function TournamentsPage() {
   const completedTournaments = filteredTournaments.filter((t) => t.status === "COMPLETED");
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
-      <section className="py-16 bg-[var(--background-secondary)]">
+      <section style={{ padding: "64px 0", background: "#121212" }}>
         <div className="container">
-          <div className="max-w-2xl">
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[var(--gold)] bg-[var(--gold)]/10 rounded-full border border-[var(--gold)]/30">
+          <div style={{ maxWidth: "672px" }}>
+            <span
+              style={{
+                display: "inline-block",
+                padding: "8px 16px",
+                marginBottom: "24px",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#FFD700",
+                background: "rgba(255, 215, 0, 0.1)",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255, 215, 0, 0.3)",
+              }}
+            >
               Tournament Schedule
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Tournaments</h1>
-            <p className="text-xl text-[var(--foreground-secondary)]">
+            <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 700, marginBottom: "16px", color: "#fff" }}>
+              Tournaments
+            </h1>
+            <p style={{ fontSize: "18px", color: "#888", lineHeight: 1.6 }}>
               Browse our complete schedule of poker tournaments. From daily events
               to major championship series.
             </p>
@@ -173,18 +187,27 @@ export default function TournamentsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="py-8 border-b border-[var(--border)] sticky top-20 bg-[var(--background)] z-30">
+      <section
+        style={{
+          padding: "24px 0",
+          borderBottom: "1px solid #333",
+          position: "sticky",
+          top: "80px",
+          background: "#0A0A0A",
+          zIndex: 30,
+        }}
+      >
         <div className="container">
-          <div className="flex flex-col md:flex-row gap-4">
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }} className="md:flex-row">
             {/* Search */}
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--foreground-muted)]" />
+            <div style={{ position: "relative", flex: 1 }}>
+              <Search style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", width: "20px", height: "20px", color: "#666" }} />
               <Input
                 type="text"
                 placeholder="Search tournaments..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                hasIcon
               />
             </div>
 
@@ -214,7 +237,14 @@ export default function TournamentsPage() {
                 onChange={(e) =>
                   setStatusFilter(e.target.value as TournamentStatus | "ALL")
                 }
-                className="px-4 py-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                style={{
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  background: "#1E1E1E",
+                  border: "1px solid #333",
+                  color: "#fff",
+                  fontSize: "14px",
+                }}
               >
                 {statusOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -226,7 +256,14 @@ export default function TournamentsPage() {
               <select
                 value={buyInFilter}
                 onChange={(e) => setBuyInFilter(e.target.value)}
-                className="px-4 py-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                style={{
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  background: "#1E1E1E",
+                  border: "1px solid #333",
+                  color: "#fff",
+                  fontSize: "14px",
+                }}
               >
                 {buyInOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -240,16 +277,16 @@ export default function TournamentsPage() {
       </section>
 
       {/* Tournament Listings */}
-      <section className="py-12">
+      <section style={{ padding: "48px 0" }}>
         <div className="container">
           {/* Live Tournaments */}
           {liveTournaments.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <span className="w-3 h-3 bg-[var(--error)] rounded-full animate-pulse" />
+            <div style={{ marginBottom: "48px" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 700, marginBottom: "24px", display: "flex", alignItems: "center", gap: "8px", color: "#fff" }}>
+                <span style={{ width: "12px", height: "12px", background: "#E53935", borderRadius: "50%" }} />
                 Live Now
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "24px" }} className="md:grid-cols-2 lg:grid-cols-3">
                 {liveTournaments.map((tournament) => (
                   <TournamentCard key={tournament.id} tournament={tournament} />
                 ))}
@@ -259,9 +296,9 @@ export default function TournamentsPage() {
 
           {/* Upcoming Tournaments */}
           {upcomingTournaments.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6">Upcoming Events</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div style={{ marginBottom: "48px" }}>
+              <h2 style={{ fontSize: "24px", fontWeight: 700, marginBottom: "24px", color: "#fff" }}>Upcoming Events</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "24px" }} className="md:grid-cols-2 lg:grid-cols-3">
                 {upcomingTournaments.map((tournament) => (
                   <TournamentCard key={tournament.id} tournament={tournament} />
                 ))}
@@ -272,8 +309,8 @@ export default function TournamentsPage() {
           {/* Completed Tournaments */}
           {completedTournaments.length > 0 && (
             <div>
-              <h2 className="text-2xl font-bold mb-6">Past Events</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <h2 style={{ fontSize: "24px", fontWeight: 700, marginBottom: "24px", color: "#fff" }}>Past Events</h2>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "24px" }} className="md:grid-cols-2 lg:grid-cols-3">
                 {completedTournaments.map((tournament) => (
                   <TournamentCard key={tournament.id} tournament={tournament} />
                 ))}
@@ -283,21 +320,22 @@ export default function TournamentsPage() {
 
           {/* No Results */}
           {filteredTournaments.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-[var(--foreground-muted)] text-lg">
+            <div style={{ textAlign: "center", padding: "64px 0" }}>
+              <p style={{ color: "#666", fontSize: "18px" }}>
                 No tournaments found matching your criteria.
               </p>
-              <Button
-                variant="outline"
-                className="mt-4"
-                onClick={() => {
-                  setSearchQuery("");
-                  setStatusFilter("ALL");
-                  setBuyInFilter("all");
-                }}
-              >
-                Clear Filters
-              </Button>
+              <div style={{ marginTop: "16px" }}>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSearchQuery("");
+                    setStatusFilter("ALL");
+                    setBuyInFilter("all");
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              </div>
             </div>
           )}
         </div>

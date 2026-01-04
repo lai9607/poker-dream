@@ -4,8 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, Trophy, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardImage } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { Tournament } from "@/types";
 
@@ -72,16 +70,37 @@ const item = {
 
 export function FeaturedTournaments() {
   return (
-    <section className="py-20 bg-[var(--background)]">
+    <section
+      style={{
+        padding: "80px 0",
+        background: "#0A0A0A",
+      }}
+    >
       <div className="container">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: "16px",
+            marginBottom: "48px",
+          }}
+          className="md:flex-row md:items-end"
+        >
           <div>
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-[var(--primary)] font-semibold text-sm uppercase tracking-wider"
+              style={{
+                color: "#E53935",
+                fontWeight: 600,
+                fontSize: "14px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
             >
               Featured Events
             </motion.span>
@@ -90,7 +109,12 @@ export function FeaturedTournaments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-4xl font-bold mt-2"
+              style={{
+                fontSize: "clamp(28px, 4vw, 40px)",
+                fontWeight: 700,
+                marginTop: "8px",
+                color: "#fff",
+              }}
             >
               Upcoming Tournaments
             </motion.h2>
@@ -101,9 +125,18 @@ export function FeaturedTournaments() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/tournaments" className="group inline-flex items-center text-[var(--foreground-secondary)] hover:text-white transition-colors">
+            <Link
+              href="/tournaments"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                color: "#888",
+                textDecoration: "none",
+                transition: "color 0.2s",
+              }}
+            >
               View All Events
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              <ArrowRight style={{ width: "16px", height: "16px", marginLeft: "8px" }} />
             </Link>
           </motion.div>
         </div>
@@ -114,67 +147,96 @@ export function FeaturedTournaments() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(1, 1fr)",
+            gap: "24px",
+          }}
+          className="md:grid-cols-2 lg:grid-cols-3"
         >
           {featuredTournaments.map((tournament) => (
             <motion.div key={tournament.id} variants={item}>
-              <Link href={`/tournaments/${tournament.id}`}>
-                <Card hover variant="bordered" className="h-full">
-                  <div className="relative">
+              <Link href={`/tournaments/${tournament.id}`} style={{ textDecoration: "none" }}>
+                <Card hover variant="bordered" style={{ height: "100%" }}>
+                  <div style={{ position: "relative" }}>
                     <CardImage
                       src={tournament.imageUrl}
                       alt={tournament.name}
                       aspectRatio="16/9"
                     />
-                    <div className="absolute top-4 left-4">
-                      <Badge
-                        variant={
-                          tournament.status === "LIVE" ? "live" : "primary"
-                        }
+                    <div style={{ position: "absolute", top: "16px", left: "16px" }}>
+                      <span
+                        style={{
+                          display: "inline-block",
+                          padding: "6px 12px",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                          color: "#fff",
+                          background: tournament.status === "LIVE" ? "#4CAF50" : "#E53935",
+                          borderRadius: "6px",
+                        }}
                       >
                         {tournament.status === "LIVE" ? "LIVE NOW" : tournament.status}
-                      </Badge>
+                      </span>
                     </div>
-                    <div className="absolute top-4 right-4">
-                      <div className="bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1.5">
-                        <p className="text-xs text-[var(--foreground-secondary)]">
+                    <div style={{ position: "absolute", top: "16px", right: "16px" }}>
+                      <div
+                        style={{
+                          background: "rgba(0,0,0,0.7)",
+                          backdropFilter: "blur(8px)",
+                          borderRadius: "8px",
+                          padding: "8px 12px",
+                        }}
+                      >
+                        <p style={{ fontSize: "12px", color: "#888", marginBottom: "2px" }}>
                           Buy-in
                         </p>
-                        <p className="text-sm font-bold text-[var(--gold)]">
+                        <p style={{ fontSize: "14px", fontWeight: 700, color: "#FFD700" }}>
                           {formatCurrency(tournament.buyIn)}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h3 className="text-xl font-bold mb-1">{tournament.name}</h3>
-                      <p className="text-[var(--foreground-secondary)] text-sm line-clamp-2">
+                  <CardContent>
+                    <div style={{ marginBottom: "16px" }}>
+                      <h3 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "4px", color: "#fff" }}>
+                        {tournament.name}
+                      </h3>
+                      <p style={{ color: "#888", fontSize: "14px" }}>
                         {tournament.description}
                       </p>
                     </div>
 
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-sm text-[var(--foreground-secondary)]">
-                        <Calendar className="w-4 h-4" />
+                    <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: "#888" }}>
+                        <Calendar style={{ width: "16px", height: "16px" }} />
                         <span>{formatDate(tournament.startDate)}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-[var(--foreground-secondary)]">
-                        <MapPin className="w-4 h-4" />
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: "#888" }}>
+                        <MapPin style={{ width: "16px", height: "16px" }} />
                         <span>{tournament.venue}</span>
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-[var(--border)] flex justify-between items-center">
-                      <div className="flex items-center gap-2">
-                        <Trophy className="w-4 h-4 text-[var(--gold)]" />
-                        <span className="font-semibold text-[var(--gold)]">
+                    <div
+                      style={{
+                        paddingTop: "16px",
+                        borderTop: "1px solid #333",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <Trophy style={{ width: "16px", height: "16px", color: "#FFD700" }} />
+                        <span style={{ fontWeight: 600, color: "#FFD700" }}>
                           {formatCurrency(tournament.prizePool)}
                         </span>
                       </div>
                       {tournament.totalEntries > 0 && (
-                        <div className="flex items-center gap-2 text-sm text-[var(--foreground-secondary)]">
-                          <Users className="w-4 h-4" />
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: "#888" }}>
+                          <Users style={{ width: "16px", height: "16px" }} />
                           <span>{tournament.totalEntries} entries</span>
                         </div>
                       )}

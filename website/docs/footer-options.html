@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Design Options - Poker Dream</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #0A0A0A;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .option-label {
+      background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+      color: #fff;
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .option-description {
+      background: #1a1a1a;
+      color: #888;
+      padding: 16px 40px;
+      font-size: 14px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+
+    .divider {
+      height: 80px;
+      background: #0A0A0A;
+    }
+
+    /* Shared styles */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .footer-link {
+      color: #888;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: #fff;
+    }
+
+    .footer-heading {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .input-field {
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #fff;
+      background: #1E1E1E;
+      border: 1px solid #333;
+      border-radius: 8px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .input-field::placeholder {
+      color: #666;
+    }
+
+    /* ==================== OPTION A: Classic 4-Column ==================== */
+    .footer-a {
+      background: #121212;
+      border-top: 1px solid #333;
+    }
+
+    .footer-a .newsletter {
+      border-bottom: 1px solid #333;
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .footer-a .newsletter h3 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .footer-a .newsletter p {
+      color: #888;
+      margin-bottom: 24px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-a .newsletter form {
+      display: flex;
+      gap: 12px;
+      max-width: 450px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-a .newsletter input {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-a .main-content {
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-a .brand-col p {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .footer-a .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-a .social-icon {
+      background: #1E1E1E;
+      color: #888;
+    }
+
+    .footer-a .social-icon:hover {
+      background: #E53935;
+      color: #fff;
+    }
+
+    .footer-a .links-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-a .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .footer-a .contact-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-a .bottom-bar {
+      border-top: 1px solid #333;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* ==================== OPTION B: Centered Minimal ==================== */
+    .footer-b {
+      background: #0A0A0A;
+      border-top: 1px solid #222;
+    }
+
+    .footer-b .main-section {
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .footer-b .logo {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-b .tagline {
+      color: #888;
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .footer-b .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-b .nav-links a {
+      color: #B3B3B3;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-b .nav-links a:hover {
+      color: #E53935;
+    }
+
+    .footer-b .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .footer-b .social-icon {
+      background: transparent;
+      border: 1px solid #333;
+      color: #888;
+    }
+
+    .footer-b .social-icon:hover {
+      border-color: #E53935;
+      color: #E53935;
+    }
+
+    .footer-b .newsletter {
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+
+    .footer-b .newsletter form {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-b .newsletter input {
+      flex: 1;
+    }
+
+    .footer-b .bottom-bar {
+      border-top: 1px solid #222;
+      padding: 20px 0;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-b .bottom-bar span {
+      margin: 0 8px;
+    }
+
+    /* ==================== OPTION C: Dark Gradient with CTA ==================== */
+    .footer-c {
+      background: linear-gradient(180deg, #0A0A0A 0%, #1a0a0a 100%);
+    }
+
+    .footer-c .cta-section {
+      padding: 64px 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(229, 57, 53, 0.2);
+    }
+
+    .footer-c .cta-section h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .footer-c .cta-section h2 span {
+      color: #E53935;
+    }
+
+    .footer-c .cta-section p {
+      color: #888;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-c .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .footer-c .btn-outline {
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .footer-c .main-content {
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .footer-c .col-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #E53935;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .footer-c .links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-c .links-list a {
+      color: #888;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-c .links-list a:hover {
+      color: #fff;
+    }
+
+    .footer-c .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .footer-c .social-icon {
+      background: rgba(229, 57, 53, 0.1);
+      border: 1px solid rgba(229, 57, 53, 0.3);
+      color: #E53935;
+    }
+
+    .footer-c .social-icon:hover {
+      background: #E53935;
+      color: #fff;
+    }
+
+    .footer-c .bottom-bar {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-c .bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-c .bottom-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .footer-c .bottom-links a:hover {
+      color: #E53935;
+    }
+
+    /* ==================== OPTION D: Compact Single Row ==================== */
+    .footer-d {
+      background: #121212;
+      border-top: 1px solid #333;
+    }
+
+    .footer-d .main-row {
+      padding: 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-d .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-d .divider-line {
+      width: 1px;
+      height: 40px;
+      background: #333;
+    }
+
+    .footer-d .tagline {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .footer-d .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-d .nav-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-d .nav-links a:hover {
+      color: #fff;
+    }
+
+    .footer-d .social-icons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-d .social-icon {
+      width: 36px;
+      height: 36px;
+      background: #1E1E1E;
+      color: #888;
+    }
+
+    .footer-d .social-icon:hover {
+      background: #E53935;
+      color: #fff;
+    }
+
+    .footer-d .bottom-bar {
+      border-top: 1px solid #333;
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* ==================== OPTION E: Premium Gold Accent ==================== */
+    .footer-e {
+      background: #0A0A0A;
+      border-top: 2px solid #FFD700;
+    }
+
+    .footer-e .top-bar {
+      background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, transparent 50%, rgba(255,215,0,0.1) 100%);
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    .footer-e .top-bar p {
+      color: #FFD700;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .footer-e .main-content {
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-e .brand-col .logo {
+      margin-bottom: 16px;
+    }
+
+    .footer-e .brand-col p {
+      color: #888;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer-e .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-e .social-icon {
+      background: #1a1a1a;
+      color: #FFD700;
+      border: 1px solid #333;
+    }
+
+    .footer-e .social-icon:hover {
+      background: #FFD700;
+      color: #000;
+      border-color: #FFD700;
+    }
+
+    .footer-e .col-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+
+    .footer-e .links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-e .links-list a {
+      color: #888;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-e .links-list a:hover {
+      color: #FFD700;
+    }
+
+    .footer-e .newsletter {
+      padding: 32px 0;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
+    .footer-e .newsletter-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-e .newsletter h4 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .footer-e .newsletter p {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .footer-e .newsletter form {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-e .newsletter input {
+      width: 280px;
+    }
+
+    .footer-e .btn-gold {
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #000;
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .footer-e .bottom-bar {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .footer-e .certifications {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer-e .cert-badge {
+      padding: 6px 12px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    /* SVG Icons */
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== OPTION A: Classic 4-Column ==================== -->
+<div class="option-label">Option A: Classic 4-Column</div>
+<div class="option-description">Traditional layout with newsletter at top, 4 organized columns, clean and professional</div>
+
+<footer class="footer-a">
+  <div class="newsletter">
+    <div class="container">
+      <h3>Stay Updated</h3>
+      <p>Subscribe to our newsletter for the latest tournament updates, exclusive promotions, and poker news.</p>
+      <form>
+        <input type="email" class="input-field" placeholder="Enter your email">
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="brand-col">
+        <div class="logo" style="margin-bottom: 16px;">
+          <div class="logo-box">PD</div>
+          <span class="logo-text">Poker Dream</span>
+        </div>
+        <p>Asia's Premier Poker Tournament Series. Join thousands of players competing for glory and life-changing prizes.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="links-col">
+        <h4 class="footer-heading">Company</h4>
+        <ul>
+          <li><a href="#" class="footer-link">About Us</a></li>
+          <li><a href="#" class="footer-link">Contact</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Press</a></li>
+        </ul>
+      </div>
+
+      <div class="links-col">
+        <h4 class="footer-heading">Resources</h4>
+        <ul>
+          <li><a href="#" class="footer-link">Tournaments</a></li>
+          <li><a href="#" class="footer-link">DPOY Rankings</a></li>
+          <li><a href="#" class="footer-link">Live Reports</a></li>
+          <li><a href="#" class="footer-link">News</a></li>
+        </ul>
+      </div>
+
+      <div class="links-col">
+        <h4 class="footer-heading">Contact Us</h4>
+        <div class="contact-item">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>info@pokerdream.com</span>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <span>+60 12-345-6789</span>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Resorts World Genting<br>Pahang, Malaysia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <p>&copy; 2026 Poker Dream. All rights reserved.</p>
+      <p>Play Responsibly. 21+ Only.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="divider"></div>
+
+<!-- ==================== OPTION B: Centered Minimal ==================== -->
+<div class="option-label">Option B: Centered Minimal</div>
+<div class="option-description">Clean, centered layout with everything aligned in the middle - modern and minimalist</div>
+
+<footer class="footer-b">
+  <div class="container">
+    <div class="main-section">
+      <div class="logo">
+        <div class="logo-box">PD</div>
+        <span class="logo-text">Poker Dream</span>
+      </div>
+      <p class="tagline">Asia's Premier Poker Tournament Series</p>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Tournaments</a>
+        <a href="#">DPOY</a>
+        <a href="#">Live Reports</a>
+        <a href="#">News</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+
+      <div class="newsletter">
+        <form>
+          <input type="email" class="input-field" placeholder="Enter your email" style="flex: 1;">
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <span>&copy; 2026 Poker Dream</span>
+      <span>|</span>
+      <span>Privacy Policy</span>
+      <span>|</span>
+      <span>Terms of Service</span>
+      <span>|</span>
+      <span>Play Responsibly. 21+ Only.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="divider"></div>
+
+<!-- ==================== OPTION C: Dark Gradient with CTA ==================== -->
+<div class="option-label">Option C: Dark Gradient with CTA</div>
+<div class="option-description">Features a prominent call-to-action section at the top with red accents throughout</div>
+
+<footer class="footer-c">
+  <div class="container">
+    <div class="cta-section">
+      <h2>Ready to <span>Play</span>?</h2>
+      <p>Join Asia's most prestigious poker tournaments and compete for life-changing prizes.</p>
+      <div class="cta-buttons">
+        <button class="btn-primary">Register Now</button>
+        <button class="btn-outline">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div>
+        <p class="col-title">Connect</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <p class="col-title">Tournaments</p>
+        <ul class="links-list">
+          <li><a href="#">Upcoming Events</a></li>
+          <li><a href="#">Main Event</a></li>
+          <li><a href="#">High Roller</a></li>
+          <li><a href="#">Live Reports</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="col-title">Rankings</p>
+        <ul class="links-list">
+          <li><a href="#">DPOY Standings</a></li>
+          <li><a href="#">All-Time Leaders</a></li>
+          <li><a href="#">Recent Winners</a></li>
+          <li><a href="#">Hall of Fame</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="col-title">Company</p>
+        <ul class="links-list">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <p>&copy; 2026 Poker Dream. All rights reserved.</p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Responsible Gaming</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="divider"></div>
+
+<!-- ==================== OPTION D: Compact Single Row ==================== -->
+<div class="option-label">Option D: Compact Single Row</div>
+<div class="option-description">Space-efficient design with everything in a single row - great for minimalist sites</div>
+
+<footer class="footer-d">
+  <div class="container">
+    <div class="main-row">
+      <div class="brand-section">
+        <div class="logo">
+          <div class="logo-box">PD</div>
+          <span class="logo-text">Poker Dream</span>
+        </div>
+        <div class="divider-line"></div>
+        <p class="tagline">Asia's Premier Poker Tournament Series</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="#">Tournaments</a>
+        <a href="#">DPOY</a>
+        <a href="#">News</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <p>&copy; 2026 Poker Dream. All rights reserved. Play Responsibly. 21+ Only.</p>
+      <div style="display: flex; gap: 24px;">
+        <a href="#" style="color: #666; text-decoration: none; font-size: 13px;">Privacy</a>
+        <a href="#" style="color: #666; text-decoration: none; font-size: 13px;">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="divider"></div>
+
+<!-- ==================== OPTION E: Premium Gold Accent ==================== -->
+<div class="option-label">Option E: Premium Gold Accent</div>
+<div class="option-description">Luxurious design with gold accents - emphasizes the premium tournament experience</div>
+
+<footer class="footer-e">
+  <div class="top-bar">
+    <div class="container">
+      <p>Join over 10,000 players competing for RM 50M+ in prizes</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="brand-col">
+        <div class="logo">
+          <div class="logo-box">PD</div>
+          <span class="logo-text">Poker Dream</span>
+        </div>
+        <p>Asia's Premier Poker Tournament Series. Where champions are made and dreams become reality.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+          <a href="#" class="social-icon"><svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="col-title">Events</h4>
+        <ul class="links-list">
+          <li><a href="#">Tournaments</a></li>
+          <li><a href="#">Schedule</a></li>
+          <li><a href="#">Live Reports</a></li>
+          <li><a href="#">Results</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="col-title">Rankings</h4>
+        <ul class="links-list">
+          <li><a href="#">DPOY</a></li>
+          <li><a href="#">Leaderboard</a></li>
+          <li><a href="#">Champions</a></li>
+          <li><a href="#">Statistics</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="col-title">Company</h4>
+        <ul class="links-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="col-title">Legal</h4>
+        <ul class="links-list">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Responsible Gaming</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="newsletter">
+      <div class="newsletter-inner">
+        <div>
+          <h4>Stay in the Game</h4>
+          <p>Get exclusive updates on tournaments and promotions</p>
+        </div>
+        <form>
+          <input type="email" class="input-field" placeholder="Enter your email">
+          <button type="submit" class="btn-gold">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <p>&copy; 2026 Poker Dream. All rights reserved. Play Responsibly. 21+ Only.</p>
+      <div class="certifications">
+        <span class="cert-badge">Licensed Operator</span>
+        <span class="cert-badge">Secure Gaming</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="divider"></div>
+<div style="padding: 40px; text-align: center; color: #666;">
+  <p>End of Footer Options</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poker Dream - Hero Section Options</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #0A0A0A;
+      color: #fff;
+    }
+
+    .option-label {
+      background: linear-gradient(135deg, #E53935, #C62828);
+      color: white;
+      padding: 16px 32px;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .divider {
+      height: 80px;
+      background: #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 2px solid #333;
+    }
+
+    .divider span {
+      color: #666;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Common Styles */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #E53935;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #C62828;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid #E53935;
+    }
+
+    .btn-outline:hover {
+      background: #E53935;
+    }
+
+    .btn-gold {
+      background: #FFD700;
+      color: #000;
+    }
+
+    .btn-gold:hover {
+      background: #FFC107;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: #FFD700;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #B3B3B3;
+    }
+
+    /* ===================== */
+    /* OPTION A: Dark Cinematic */
+    /* ===================== */
+    .hero-a {
+      background: linear-gradient(135deg, #0A0A0A 0%, #1a0a0a 100%);
+    }
+
+    .hero-a .bg-image {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=1920') center/cover;
+      opacity: 0.3;
+    }
+
+    .hero-a .bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 100%);
+    }
+
+    .hero-a .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    .hero-a .tag {
+      background: rgba(229, 57, 53, 0.2);
+      color: #E53935;
+      border: 1px solid rgba(229, 57, 53, 0.3);
+    }
+
+    .hero-a h1 {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+
+    .hero-a h1 span {
+      background: linear-gradient(135deg, #E53935, #FF6B6B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-a p {
+      font-size: 20px;
+      color: #B3B3B3;
+      max-width: 500px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-a .buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* ===================== */
+    /* OPTION B: Split Layout */
+    /* ===================== */
+    .hero-b {
+      background: #0A0A0A;
+    }
+
+    .hero-b .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .hero-b .left {
+      padding: 80px 64px 80px 0;
+    }
+
+    .hero-b .right {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      overflow: hidden;
+    }
+
+    .hero-b .right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=1200') center/cover;
+      opacity: 0.6;
+    }
+
+    .hero-b .right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, transparent 0%, #0A0A0A 100%);
+    }
+
+    .hero-b .tag {
+      background: #FFD700;
+      color: #000;
+    }
+
+    .hero-b h1 {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-b h1 span {
+      color: #E53935;
+    }
+
+    .hero-b p {
+      font-size: 18px;
+      color: #B3B3B3;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-b .buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-b .stats {
+      border-top: 1px solid #333;
+    }
+
+    /* ===================== */
+    /* OPTION C: Gradient Focus */
+    /* ===================== */
+    .hero-c {
+      background: linear-gradient(180deg, #1a0505 0%, #0A0A0A 100%);
+    }
+
+    .hero-c .bg-glow {
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(229,57,53,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-c .bg-glow-2 {
+      position: absolute;
+      bottom: -300px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-c .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding-top: 80px;
+      text-align: center;
+    }
+
+    .hero-c .tag {
+      background: linear-gradient(135deg, #E53935, #C62828);
+      color: white;
+    }
+
+    .hero-c h1 {
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+
+    .hero-c h1 span {
+      background: linear-gradient(135deg, #FFD700, #FFA000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-c p {
+      font-size: 20px;
+      color: #B3B3B3;
+      max-width: 600px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .hero-c .buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-c .stats {
+      max-width: 700px;
+      margin: 64px auto 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+
+    /* ===================== */
+    /* OPTION D: Card Visual */
+    /* ===================== */
+    .hero-d {
+      background: #0A0A0A;
+    }
+
+    .hero-d .bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-d .content {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    .hero-d .tag {
+      background: transparent;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+    }
+
+    .hero-d h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .hero-d h1 span {
+      color: #E53935;
+    }
+
+    .hero-d p {
+      font-size: 18px;
+      color: #B3B3B3;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-d .buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-d .card-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 500px;
+    }
+
+    .hero-d .card {
+      width: 200px;
+      height: 280px;
+      background: linear-gradient(135deg, #1E1E1E, #2A2A2A);
+      border-radius: 16px;
+      border: 1px solid #333;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    .hero-d .card-1 {
+      transform: rotate(-15deg) translateX(-120px);
+      z-index: 1;
+    }
+
+    .hero-d .card-2 {
+      transform: rotate(0deg);
+      z-index: 2;
+      background: linear-gradient(135deg, #E53935, #C62828);
+      border: none;
+    }
+
+    .hero-d .card-3 {
+      transform: rotate(15deg) translateX(120px);
+      z-index: 1;
+    }
+
+    .hero-d .card-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .hero-d .card-text {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .hero-d .stats {
+      grid-column: span 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===================== */
+    /* OPTION E: Minimal Clean */
+    /* ===================== */
+    .hero-e {
+      background: #0A0A0A;
+    }
+
+    .hero-e .accent-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #E53935, #FFD700, #E53935);
+    }
+
+    .hero-e .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    .hero-e .tag {
+      background: #1E1E1E;
+      color: #E53935;
+      border: none;
+    }
+
+    .hero-e h1 {
+      font-size: 88px;
+      font-weight: 700;
+      line-height: 1.0;
+      margin-bottom: 32px;
+      max-width: 900px;
+    }
+
+    .hero-e h1 .line-2 {
+      color: #E53935;
+    }
+
+    .hero-e h1 .line-3 {
+      color: #666;
+      font-size: 48px;
+    }
+
+    .hero-e p {
+      font-size: 20px;
+      color: #666;
+      max-width: 500px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .hero-e .buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-e .stats {
+      position: absolute;
+      bottom: 80px;
+      left: 32px;
+      right: 32px;
+      max-width: 1216px;
+      margin: 0 auto;
+      background: #1E1E1E;
+      border-radius: 16px;
+      padding: 32px 48px;
+      border-top: none;
+    }
+
+    .hero-e .stat-number {
+      font-size: 42px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- OPTION A: Dark Cinematic -->
+  <div class="option-label">Option A: Dark Cinematic (Strong left-aligned with subtle background)</div>
+  <section class="hero hero-a">
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+    <div class="container">
+      <div class="content">
+        <div>
+          <span class="tag">Asia's Premier Poker Tournament Series</span>
+          <h1>Where <span>Champions</span> Are Made</h1>
+          <p>Join thousands of players from around the world competing for glory and life-changing prizes at Malaysia's most prestigious poker events.</p>
+          <div class="buttons">
+            <a href="#" class="btn btn-primary">View Tournaments</a>
+            <a href="#" class="btn btn-outline">DPOY Rankings</a>
+          </div>
+          <div class="stats">
+            <div>
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Events Per Year</div>
+            </div>
+            <div>
+              <div class="stat-number">RM 50M+</div>
+              <div class="stat-label">Total Prize Pool</div>
+            </div>
+            <div>
+              <div class="stat-number">10K+</div>
+              <div class="stat-label">Players Worldwide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>Scroll for more options</span></div>
+
+  <!-- OPTION B: Split Layout -->
+  <div class="option-label">Option B: Split Layout (Content left, Image right)</div>
+  <section class="hero hero-b">
+    <div class="container">
+      <div class="content">
+        <div class="left">
+          <span class="tag">Poker Dream 2025</span>
+          <h1>Where <span>Champions</span> Are Made</h1>
+          <p>Join thousands of players from around the world competing for glory and life-changing prizes at Malaysia's most prestigious poker events.</p>
+          <div class="buttons">
+            <a href="#" class="btn btn-primary">View Tournaments</a>
+            <a href="#" class="btn btn-outline">DPOY Rankings</a>
+          </div>
+          <div class="stats">
+            <div>
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Events Per Year</div>
+            </div>
+            <div>
+              <div class="stat-number">RM 50M+</div>
+              <div class="stat-label">Total Prize Pool</div>
+            </div>
+            <div>
+              <div class="stat-number">10K+</div>
+              <div class="stat-label">Players Worldwide</div>
+            </div>
+          </div>
+        </div>
+        <div class="right"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>Scroll for more options</span></div>
+
+  <!-- OPTION C: Gradient Focus -->
+  <div class="option-label">Option C: Centered Gradient (Bold, dramatic, centered)</div>
+  <section class="hero hero-c">
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    <div class="container">
+      <div class="content">
+        <span class="tag">Asia's Premier Poker Series</span>
+        <h1>Where <span>Champions</span> Are Made</h1>
+        <p>Join thousands of players from around the world competing for glory and life-changing prizes at Malaysia's most prestigious poker events.</p>
+        <div class="buttons">
+          <a href="#" class="btn btn-primary">View Tournaments</a>
+          <a href="#" class="btn btn-gold">DPOY Rankings</a>
+        </div>
+        <div class="stats">
+          <div>
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Events Per Year</div>
+          </div>
+          <div>
+            <div class="stat-number">RM 50M+</div>
+            <div class="stat-label">Total Prize Pool</div>
+          </div>
+          <div>
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Players Worldwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>Scroll for more options</span></div>
+
+  <!-- OPTION D: Card Visual -->
+  <div class="option-label">Option D: Card Visual (Abstract poker cards illustration)</div>
+  <section class="hero hero-d">
+    <div class="bg-pattern"></div>
+    <div class="container">
+      <div class="content">
+        <div class="left">
+          <span class="tag">Poker Dream 2025</span>
+          <h1>Where <span>Champions</span> Are Made</h1>
+          <p>Join thousands of players from around the world competing for glory and life-changing prizes at Malaysia's most prestigious poker events.</p>
+          <div class="buttons">
+            <a href="#" class="btn btn-primary">View Tournaments</a>
+            <a href="#" class="btn btn-outline">DPOY Rankings</a>
+          </div>
+        </div>
+        <div class="card-visual">
+          <div class="card card-1">
+            <div class="card-icon">&#9824;</div>
+            <div class="card-text">A</div>
+          </div>
+          <div class="card card-2">
+            <div class="card-icon" style="color: white;">&#9829;</div>
+            <div class="card-text" style="color: white;">K</div>
+          </div>
+          <div class="card card-3">
+            <div class="card-icon">&#9827;</div>
+            <div class="card-text">Q</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div>
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Events Per Year</div>
+          </div>
+          <div>
+            <div class="stat-number">RM 50M+</div>
+            <div class="stat-label">Total Prize Pool</div>
+          </div>
+          <div>
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Players Worldwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>Scroll for more options</span></div>
+
+  <!-- OPTION E: Minimal Clean -->
+  <div class="option-label">Option E: Minimal Clean (Ultra-clean typography focus)</div>
+  <section class="hero hero-e">
+    <div class="accent-line"></div>
+    <div class="container">
+      <div class="content">
+        <span class="tag">Asia's Premier Poker Series</span>
+        <h1>
+          <span class="line-1">POKER</span><br>
+          <span class="line-2">DREAM</span><br>
+          <span class="line-3">2025</span>
+        </h1>
+        <p>Join thousands of players competing for glory and life-changing prizes at Malaysia's most prestigious poker events.</p>
+        <div class="buttons">
+          <a href="#" class="btn btn-primary">View Tournaments</a>
+          <a href="#" class="btn btn-outline">DPOY Rankings</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div>
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Events Per Year</div>
+        </div>
+        <div>
+          <div class="stat-number">RM 50M+</div>
+          <div class="stat-label">Total Prize Pool</div>
+        </div>
+        <div>
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Players Worldwide</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>End of options</span></div>
+
+</body>
+</html>

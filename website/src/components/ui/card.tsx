@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, HTMLAttributes } from "react";
+import { forwardRef, HTMLAttributes, CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -9,23 +9,26 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant = "default", hover = false, children, ...props }, ref) => {
-    const baseStyles = "rounded-xl overflow-hidden";
-
-    const variants = {
-      default: "bg-[var(--surface)]",
-      bordered: "bg-[var(--surface)] border border-[var(--border)]",
-      elevated: "bg-[var(--surface)] shadow-lg",
+  ({ className, variant = "default", hover = false, style, children, ...props }, ref) => {
+    const baseStyle: CSSProperties = {
+      borderRadius: "12px",
+      overflow: "hidden",
+      background: "#1E1E1E",
+      transition: hover ? "all 0.3s ease" : undefined,
+      cursor: hover ? "pointer" : undefined,
     };
 
-    const hoverStyles = hover
-      ? "transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl cursor-pointer"
-      : "";
+    const variantStyles: Record<string, CSSProperties> = {
+      default: {},
+      bordered: { border: "1px solid #333" },
+      elevated: { boxShadow: "0 10px 40px rgba(0,0,0,0.3)" },
+    };
 
     return (
       <div
         ref={ref}
-        className={cn(baseStyles, variants[variant], hoverStyles, className)}
+        className={className}
+        style={{ ...baseStyle, ...variantStyles[variant], ...style }}
         {...props}
       >
         {children}
@@ -37,26 +40,43 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
 Card.displayName = "Card";
 
 const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("p-6 pb-0", className)} {...props} />
+  ({ className, style, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={className}
+      style={{ padding: "24px", paddingBottom: 0, ...style }}
+      {...props}
+    />
   )
 );
 
 CardHeader.displayName = "CardHeader";
 
 const CardContent = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("p-6", className)} {...props} />
+  ({ className, style, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={className}
+      style={{ padding: "24px", ...style }}
+      {...props}
+    />
   )
 );
 
 CardContent.displayName = "CardContent";
 
 const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
+  ({ className, style, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("p-6 pt-0 flex items-center", className)}
+      className={className}
+      style={{
+        padding: "24px",
+        paddingTop: 0,
+        display: "flex",
+        alignItems: "center",
+        ...style,
+      }}
       {...props}
     />
   )
@@ -67,11 +87,18 @@ CardFooter.displayName = "CardFooter";
 const CardImage = forwardRef<
   HTMLImageElement,
   React.ImgHTMLAttributes<HTMLImageElement> & { aspectRatio?: string }
->(({ className, aspectRatio = "16/9", alt = "", ...props }, ref) => (
-  <div className="relative w-full" style={{ aspectRatio }}>
+>(({ className, aspectRatio = "16/9", alt = "", style, ...props }, ref) => (
+  <div style={{ position: "relative", width: "100%", aspectRatio }}>
     <img
       ref={ref}
-      className={cn("absolute inset-0 w-full h-full object-cover", className)}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        ...style,
+      }}
       alt={alt}
       {...props}
     />

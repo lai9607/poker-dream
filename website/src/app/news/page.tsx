@@ -131,16 +131,28 @@ export default function NewsPage() {
   const restArticles = filteredArticles.slice(1);
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
-      <section className="py-16 bg-[var(--background-secondary)]">
+      <section style={{ padding: "64px 0", background: "#121212" }}>
         <div className="container">
-          <div className="max-w-2xl">
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-semibold text-[var(--gold)] bg-[var(--gold)]/10 rounded-full border border-[var(--gold)]/30">
+          <div style={{ maxWidth: "672px" }}>
+            <span
+              style={{
+                display: "inline-block",
+                padding: "8px 16px",
+                marginBottom: "24px",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#FFD700",
+                background: "rgba(255, 215, 0, 0.1)",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255, 215, 0, 0.3)",
+              }}
+            >
               Latest Updates
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">News & Events</h1>
-            <p className="text-xl text-[var(--foreground-secondary)]">
+            <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 700, marginBottom: "16px", color: "#fff" }}>News & Events</h1>
+            <p style={{ fontSize: "20px", color: "#888", lineHeight: 1.6 }}>
               Stay updated with the latest poker news, tournament announcements,
               player interviews, and strategy tips.
             </p>
@@ -149,20 +161,20 @@ export default function NewsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="py-8 border-b border-[var(--border)]">
+      <section style={{ padding: "32px 0", borderBottom: "1px solid #333" }}>
         <div className="container">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--foreground-muted)]" />
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }} className="md:flex-row">
+            <div style={{ position: "relative", flex: 1, maxWidth: "448px" }}>
+              <Search style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", width: "20px", height: "20px", color: "#666" }} />
               <Input
                 type="text"
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                hasIcon
               />
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
               {categories.map((cat) => (
                 <Button
                   key={cat.value}
@@ -179,23 +191,24 @@ export default function NewsPage() {
       </section>
 
       {/* Articles Section */}
-      <section className="py-12">
+      <section style={{ padding: "48px 0" }}>
         <div className="container">
           {filteredArticles.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-[var(--foreground-muted)] text-lg">
+            <div style={{ textAlign: "center", padding: "64px 0" }}>
+              <p style={{ color: "#666", fontSize: "18px" }}>
                 No articles found matching your criteria.
               </p>
-              <Button
-                variant="outline"
-                className="mt-4"
-                onClick={() => {
-                  setSearchQuery("");
-                  setCategoryFilter("ALL");
-                }}
-              >
-                Clear Filters
-              </Button>
+              <div style={{ marginTop: "16px" }}>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSearchQuery("");
+                    setCategoryFilter("ALL");
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              </div>
             </div>
           ) : (
             <>
@@ -204,34 +217,34 @@ export default function NewsPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-12"
+                  style={{ marginBottom: "48px" }}
                 >
                   <Link href={`/news/${featuredArticle.id}`}>
-                    <Card hover variant="bordered" className="overflow-hidden">
-                      <div className="grid md:grid-cols-2">
+                    <Card hover variant="bordered" style={{ overflow: "hidden" }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr" }} className="md:grid-cols-2">
                         <CardImage
                           src={featuredArticle.imageUrl}
                           alt={featuredArticle.title}
                           aspectRatio="16/10"
-                          className="md:aspect-auto md:h-full"
                         />
-                        <CardContent className="p-8 flex flex-col justify-center">
-                          <Badge
-                            variant={categoryColors[featuredArticle.category]}
-                            className="mb-4 w-fit"
-                          >
-                            {featuredArticle.category.replace("_", " ")}
-                          </Badge>
-                          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                        <CardContent style={{ padding: "32px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                          <div style={{ marginBottom: "16px", width: "fit-content" }}>
+                            <Badge
+                              variant={categoryColors[featuredArticle.category]}
+                            >
+                              {featuredArticle.category.replace("_", " ")}
+                            </Badge>
+                          </div>
+                          <h2 style={{ fontSize: "clamp(24px, 3vw, 30px)", fontWeight: 700, marginBottom: "16px", color: "#fff" }}>
                             {featuredArticle.title}
                           </h2>
-                          <p className="text-[var(--foreground-secondary)] mb-6">
+                          <p style={{ color: "#888", marginBottom: "24px" }}>
                             {featuredArticle.summary}
                           </p>
-                          <div className="flex items-center justify-between text-sm text-[var(--foreground-muted)]">
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14px", color: "#666" }}>
                             <span>{featuredArticle.author}</span>
-                            <div className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
+                            <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                              <Clock style={{ width: "16px", height: "16px" }} />
                               <span>{formatDate(featuredArticle.publishedAt)}</span>
                             </div>
                           </div>
@@ -243,7 +256,7 @@ export default function NewsPage() {
               )}
 
               {/* Articles Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)", gap: "24px" }} className="md:grid-cols-2 lg:grid-cols-3">
                 {restArticles.map((article, index) => (
                   <motion.div
                     key={article.id}
@@ -252,14 +265,14 @@ export default function NewsPage() {
                     transition={{ delay: index * 0.1 }}
                   >
                     <Link href={`/news/${article.id}`}>
-                      <Card hover variant="bordered" className="h-full">
-                        <div className="relative">
+                      <Card hover variant="bordered" style={{ height: "100%" }}>
+                        <div style={{ position: "relative" }}>
                           <CardImage
                             src={article.imageUrl}
                             alt={article.title}
                             aspectRatio="16/9"
                           />
-                          <div className="absolute top-4 left-4">
+                          <div style={{ position: "absolute", top: "16px", left: "16px" }}>
                             <Badge
                               variant={categoryColors[article.category]}
                               size="sm"
@@ -268,19 +281,19 @@ export default function NewsPage() {
                             </Badge>
                           </div>
                         </div>
-                        <CardContent className="space-y-4">
+                        <CardContent style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                           <div>
-                            <h3 className="text-lg font-bold mb-2 line-clamp-2">
+                            <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "#fff" }} className="line-clamp-2">
                               {article.title}
                             </h3>
-                            <p className="text-[var(--foreground-secondary)] text-sm line-clamp-2">
+                            <p style={{ color: "#888", fontSize: "14px" }} className="line-clamp-2">
                               {article.summary}
                             </p>
                           </div>
-                          <div className="flex items-center justify-between text-sm text-[var(--foreground-muted)]">
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14px", color: "#666" }}>
                             <span>{article.author}</span>
-                            <div className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
+                            <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                              <Clock style={{ width: "16px", height: "16px" }} />
                               <span>{formatDate(article.publishedAt)}</span>
                             </div>
                           </div>

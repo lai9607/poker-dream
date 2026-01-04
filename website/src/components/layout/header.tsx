@@ -4,9 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { mainNavigation, siteConfig } from "@/config/navigation";
-import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,58 +28,139 @@ export function Header() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-[var(--background)]/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      )}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        transition: "all 0.3s ease",
+        background: isScrolled
+          ? "rgba(10, 10, 10, 0.95)"
+          : "transparent",
+        backdropFilter: isScrolled ? "blur(12px)" : "none",
+        boxShadow: isScrolled ? "0 4px 20px rgba(0,0,0,0.3)" : "none",
+      }}
     >
       <div className="container">
-        <nav className="flex items-center justify-between h-20">
+        <nav
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: "80px",
+          }}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">PD</span>
+          <Link
+            href="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              textDecoration: "none",
+            }}
+          >
+            <div
+              style={{
+                width: "40px",
+                height: "40px",
+                background: "linear-gradient(135deg, #E53935 0%, #C62828 100%)",
+                borderRadius: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: "#fff",
+                  fontWeight: 700,
+                  fontSize: "18px",
+                }}
+              >
+                PD
+              </span>
             </div>
-            <span className="text-xl font-bold text-white hidden sm:block">
+            <span
+              style={{
+                fontSize: "20px",
+                fontWeight: 700,
+                color: "#fff",
+              }}
+            >
               {siteConfig.name}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+            className="hidden lg:flex"
+          >
             {mainNavigation.map((item) => (
-              <div key={item.label} className="relative">
+              <div key={item.label} style={{ position: "relative" }}>
                 {item.children ? (
                   <div
-                    className="relative"
+                    style={{ position: "relative" }}
                     onMouseEnter={() => setOpenDropdown(item.label)}
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
                     <button
-                      className={cn(
-                        "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                        pathname.startsWith(item.href)
-                          ? "text-[var(--primary)]"
-                          : "text-[var(--foreground-secondary)] hover:text-white"
-                      )}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        padding: "8px 16px",
+                        borderRadius: "8px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        color: pathname.startsWith(item.href)
+                          ? "#E53935"
+                          : "rgba(255,255,255,0.8)",
+                        background: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                        transition: "color 0.2s",
+                      }}
                     >
                       {item.label}
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown style={{ width: "16px", height: "16px" }} />
                     </button>
                     {openDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-1 py-2 w-48 bg-[var(--surface)] rounded-lg shadow-xl border border-[var(--border)]">
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "100%",
+                          left: 0,
+                          marginTop: "4px",
+                          padding: "8px 0",
+                          width: "200px",
+                          background: "#1E1E1E",
+                          borderRadius: "12px",
+                          boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+                          border: "1px solid #333",
+                        }}
+                      >
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
                             href={child.href}
-                            className={cn(
-                              "block px-4 py-2 text-sm transition-colors",
-                              pathname === child.href
-                                ? "text-[var(--primary)] bg-[var(--surface-hover)]"
-                                : "text-[var(--foreground-secondary)] hover:text-white hover:bg-[var(--surface-hover)]"
-                            )}
+                            style={{
+                              display: "block",
+                              padding: "10px 16px",
+                              fontSize: "14px",
+                              color:
+                                pathname === child.href
+                                  ? "#E53935"
+                                  : "rgba(255,255,255,0.7)",
+                              textDecoration: "none",
+                              transition: "all 0.2s",
+                            }}
                           >
                             {child.label}
                           </Link>
@@ -92,12 +171,18 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className={cn(
-                      "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                      pathname === item.href
-                        ? "text-[var(--primary)]"
-                        : "text-[var(--foreground-secondary)] hover:text-white"
-                    )}
+                    style={{
+                      padding: "8px 16px",
+                      borderRadius: "8px",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      color:
+                        pathname === item.href
+                          ? "#E53935"
+                          : "rgba(255,255,255,0.8)",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -107,23 +192,63 @@ export function Header() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="sm">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+            }}
+            className="hidden lg:flex"
+          >
+            <button
+              style={{
+                padding: "10px 20px",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#fff",
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.3)",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "all 0.2s",
+              }}
+            >
               Download App
-            </Button>
-            <Button size="sm">Register Now</Button>
+            </button>
+            <button
+              style={{
+                padding: "10px 20px",
+                fontSize: "14px",
+                fontWeight: 600,
+                color: "#fff",
+                background: "linear-gradient(135deg, #E53935 0%, #C62828 100%)",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "all 0.2s",
+              }}
+            >
+              Register Now
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-white"
+            style={{
+              padding: "8px",
+              color: "#fff",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+            className="lg:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X style={{ width: "24px", height: "24px" }} />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu style={{ width: "24px", height: "24px" }} />
             )}
           </button>
         </nav>
@@ -131,8 +256,14 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[var(--background)] border-t border-[var(--border)]">
-          <div className="container py-4 space-y-2">
+        <div
+          style={{
+            background: "#0A0A0A",
+            borderTop: "1px solid #333",
+          }}
+          className="lg:hidden"
+        >
+          <div className="container" style={{ padding: "16px" }}>
             {mainNavigation.map((item) => (
               <div key={item.label}>
                 {item.children ? (
@@ -143,23 +274,45 @@ export function Header() {
                           openDropdown === item.label ? null : item.label
                         )
                       }
-                      className="flex items-center justify-between w-full px-4 py-3 text-[var(--foreground-secondary)]"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        padding: "12px 16px",
+                        color: "rgba(255,255,255,0.7)",
+                        background: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: "16px",
+                      }}
                     >
                       {item.label}
                       <ChevronDown
-                        className={cn(
-                          "w-4 h-4 transition-transform",
-                          openDropdown === item.label && "rotate-180"
-                        )}
+                        style={{
+                          width: "16px",
+                          height: "16px",
+                          transform:
+                            openDropdown === item.label
+                              ? "rotate(180deg)"
+                              : "rotate(0deg)",
+                          transition: "transform 0.2s",
+                        }}
                       />
                     </button>
                     {openDropdown === item.label && (
-                      <div className="pl-4 space-y-1">
+                      <div style={{ paddingLeft: "16px" }}>
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-[var(--foreground-muted)] hover:text-white"
+                            style={{
+                              display: "block",
+                              padding: "8px 16px",
+                              fontSize: "14px",
+                              color: "rgba(255,255,255,0.5)",
+                              textDecoration: "none",
+                            }}
                           >
                             {child.label}
                           </Link>
@@ -170,23 +323,53 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className={cn(
-                      "block px-4 py-3",
-                      pathname === item.href
-                        ? "text-[var(--primary)]"
-                        : "text-[var(--foreground-secondary)]"
-                    )}
+                    style={{
+                      display: "block",
+                      padding: "12px 16px",
+                      color:
+                        pathname === item.href
+                          ? "#E53935"
+                          : "rgba(255,255,255,0.7)",
+                      textDecoration: "none",
+                      fontSize: "16px",
+                    }}
                   >
                     {item.label}
                   </Link>
                 )}
               </div>
             ))}
-            <div className="pt-4 space-y-2">
-              <Button variant="outline" className="w-full">
+            <div style={{ paddingTop: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <button
+                style={{
+                  width: "100%",
+                  padding: "12px 20px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#fff",
+                  background: "transparent",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                }}
+              >
                 Download App
-              </Button>
-              <Button className="w-full">Register Now</Button>
+              </button>
+              <button
+                style={{
+                  width: "100%",
+                  padding: "12px 20px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#fff",
+                  background: "linear-gradient(135deg, #E53935 0%, #C62828 100%)",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                }}
+              >
+                Register Now
+              </button>
             </div>
           </div>
         </div>

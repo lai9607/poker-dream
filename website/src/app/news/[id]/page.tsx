@@ -104,7 +104,7 @@ const categoryColors: Record<NewsCategory, "primary" | "success" | "warning" | "
 
 export default function NewsArticlePage() {
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Image */}
       <section className="relative h-[50vh] min-h-[400px]">
         <div

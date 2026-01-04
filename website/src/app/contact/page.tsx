@@ -73,7 +73,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
       <section className="py-16 bg-[var(--background-secondary)]">
         <div className="container">

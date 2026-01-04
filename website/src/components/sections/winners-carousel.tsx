@@ -15,7 +15,6 @@ interface Winner {
   imageUrl: string;
 }
 
-// Mock data - replace with API call
 const winners: Winner[] = [
   {
     id: "1",
@@ -91,15 +90,26 @@ export function WinnersCarousel() {
   const currentWinner = winners[currentIndex];
 
   return (
-    <section className="py-20 bg-[var(--background-secondary)]">
+    <section
+      style={{
+        padding: "80px 0",
+        background: "#121212",
+      }}
+    >
       <div className="container">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[var(--gold)] font-semibold text-sm uppercase tracking-wider"
+            style={{
+              color: "#FFD700",
+              fontWeight: 600,
+              fontSize: "14px",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+            }}
           >
             Hall of Champions
           </motion.span>
@@ -108,15 +118,28 @@ export function WinnersCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold mt-2"
+            style={{
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 700,
+              marginTop: "8px",
+              color: "#fff",
+            }}
           >
             Recent Winners
           </motion.h2>
         </div>
 
         {/* Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+        <div style={{ position: "relative", maxWidth: "900px", margin: "0 auto" }}>
+          <div
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "16px",
+              background: "#1E1E1E",
+              border: "1px solid #333",
+            }}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -124,49 +147,107 @@ export function WinnersCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col md:flex-row"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+                className="flex-col md:flex-row"
               >
                 {/* Image */}
-                <div className="relative md:w-1/2">
-                  <div className="aspect-square md:aspect-auto md:h-full">
-                    <img
-                      src={currentWinner.imageUrl}
-                      alt={currentWinner.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r" />
-                  <div className="absolute bottom-4 left-4 md:hidden">
-                    <Trophy className="w-12 h-12 text-[var(--gold)]" />
-                  </div>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "50%",
+                    minHeight: "400px",
+                  }}
+                  className="w-full md:w-1/2"
+                >
+                  <img
+                    src={currentWinner.imageUrl}
+                    alt={currentWinner.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to right, transparent 0%, rgba(30,30,30,0.8) 100%)",
+                    }}
+                  />
                 </div>
 
                 {/* Content */}
-                <div className="p-8 md:w-1/2 flex flex-col justify-center">
-                  <div className="hidden md:block mb-6">
-                    <Trophy className="w-16 h-16 text-[var(--gold)]" />
+                <div
+                  style={{
+                    padding: "40px",
+                    width: "50%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                  className="w-full md:w-1/2"
+                >
+                  <div style={{ marginBottom: "24px" }}>
+                    <Trophy style={{ width: "64px", height: "64px", color: "#FFD700" }} />
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                  <h3
+                    style={{
+                      fontSize: "32px",
+                      fontWeight: 700,
+                      marginBottom: "8px",
+                      color: "#fff",
+                    }}
+                  >
                     {currentWinner.name}
                   </h3>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      marginBottom: "16px",
+                    }}
+                  >
                     <img
                       src={`https://flagcdn.com/24x18/${currentWinner.countryCode.toLowerCase()}.png`}
                       alt={currentWinner.country}
-                      className="w-6 h-4 object-cover rounded"
+                      style={{
+                        width: "24px",
+                        height: "18px",
+                        objectFit: "cover",
+                        borderRadius: "2px",
+                      }}
                     />
-                    <span className="text-[var(--foreground-secondary)]">
-                      {currentWinner.country}
-                    </span>
+                    <span style={{ color: "#888" }}>{currentWinner.country}</span>
                   </div>
-                  <p className="text-[var(--foreground-secondary)] mb-4">
+                  <p style={{ color: "#888", marginBottom: "16px" }}>
                     {currentWinner.tournament}
                   </p>
-                  <div className="bg-[var(--background)] rounded-lg p-4 inline-block">
-                    <p className="text-sm text-[var(--foreground-secondary)]">
+                  <div
+                    style={{
+                      background: "#0A0A0A",
+                      borderRadius: "12px",
+                      padding: "16px 20px",
+                      display: "inline-block",
+                    }}
+                  >
+                    <p style={{ fontSize: "14px", color: "#888", marginBottom: "4px" }}>
                       Prize Won
                     </p>
-                    <p className="text-3xl font-bold text-[var(--gold)]">
+                    <p
+                      style={{
+                        fontSize: "28px",
+                        fontWeight: 700,
+                        color: "#FFD700",
+                      }}
+                    >
                       {formatCurrency(currentWinner.prize)}
                     </p>
                   </div>
@@ -178,21 +259,62 @@ export function WinnersCarousel() {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+            style={{
+              position: "absolute",
+              left: "16px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              background: "rgba(0,0,0,0.5)",
+              backdropFilter: "blur(8px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#fff",
+              border: "none",
+              cursor: "pointer",
+              transition: "background 0.2s",
+            }}
             aria-label="Previous winner"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft style={{ width: "24px", height: "24px" }} />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+            style={{
+              position: "absolute",
+              right: "16px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              background: "rgba(0,0,0,0.5)",
+              backdropFilter: "blur(8px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#fff",
+              border: "none",
+              cursor: "pointer",
+              transition: "background 0.2s",
+            }}
             aria-label="Next winner"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight style={{ width: "24px", height: "24px" }} />
           </button>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "8px",
+              marginTop: "24px",
+            }}
+          >
             {winners.map((_, index) => (
               <button
                 key={index}
@@ -200,11 +322,15 @@ export function WinnersCarousel() {
                   setAutoPlay(false);
                   setCurrentIndex(index);
                 }}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentIndex
-                    ? "bg-[var(--primary)]"
-                    : "bg-[var(--border)] hover:bg-[var(--border-light)]"
-                }`}
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  borderRadius: "50%",
+                  background: index === currentIndex ? "#E53935" : "#333",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                }}
                 aria-label={`Go to winner ${index + 1}`}
               />
             ))}

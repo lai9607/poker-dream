@@ -65,7 +65,7 @@ const team = [
 
 export default function AboutPage() {
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">

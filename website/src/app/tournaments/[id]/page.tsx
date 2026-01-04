@@ -149,7 +149,7 @@ export default function TournamentDetailPage() {
   );
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section with Background */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">

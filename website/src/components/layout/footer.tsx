@@ -6,160 +6,229 @@ import {
   Instagram,
   Twitter,
   Youtube,
-  Mail,
-  Phone,
-  MapPin,
 } from "lucide-react";
-import { footerNavigation, siteConfig } from "@/config/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { siteConfig } from "@/config/navigation";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  return (
-    <footer className="bg-[var(--background-secondary)] border-t border-[var(--border)]">
-      {/* Newsletter Section */}
-      <div className="border-b border-[var(--border)]">
-        <div className="container py-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
-            <p className="text-[var(--foreground-secondary)] mb-6">
-              Subscribe to our newsletter for the latest tournament updates,
-              exclusive promotions, and poker news.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1"
-              />
-              <Button type="submit">Subscribe</Button>
-            </form>
-          </div>
-        </div>
-      </div>
+  const navLinks = [
+    { label: "Tournaments", href: "/tournaments" },
+    { label: "DPOY", href: "/dpoy" },
+    { label: "News", href: "/news" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
 
-      {/* Main Footer Content */}
-      <div className="container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">PD</span>
+  const socialLinks = [
+    { icon: Facebook, href: "https://facebook.com/pokerdream", label: "Facebook" },
+    { icon: Instagram, href: "https://instagram.com/pokerdream", label: "Instagram" },
+    { icon: Twitter, href: "https://twitter.com/pokerdream", label: "Twitter" },
+    { icon: Youtube, href: "https://youtube.com/pokerdream", label: "YouTube" },
+  ];
+
+  return (
+    <footer
+      style={{
+        background: "#121212",
+        borderTop: "1px solid #333",
+      }}
+    >
+      {/* Main Row */}
+      <div className="container">
+        <div
+          style={{
+            padding: "40px 0",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "24px",
+          }}
+        >
+          {/* Brand Section */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "24px",
+            }}
+          >
+            <Link
+              href="/"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                textDecoration: "none",
+              }}
+            >
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  background: "linear-gradient(135deg, #E53935 0%, #C62828 100%)",
+                  borderRadius: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#fff",
+                    fontWeight: 700,
+                    fontSize: "18px",
+                  }}
+                >
+                  PD
+                </span>
               </div>
-              <span className="text-xl font-bold text-white">
+              <span
+                style={{
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  color: "#fff",
+                }}
+              >
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="text-[var(--foreground-secondary)] text-sm mb-4">
-              {siteConfig.description}. Join thousands of players competing for
-              glory and life-changing prizes.
+
+            {/* Divider */}
+            <div
+              style={{
+                width: "1px",
+                height: "40px",
+                background: "#333",
+              }}
+              className="hidden md:block"
+            />
+
+            {/* Tagline */}
+            <p
+              style={{
+                color: "#888",
+                fontSize: "14px",
+              }}
+              className="hidden md:block"
+            >
+              {siteConfig.description}
             </p>
-            {/* Social Links */}
-            <div className="flex gap-3">
-              {footerNavigation.social.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-[var(--surface)] flex items-center justify-center text-[var(--foreground-secondary)] hover:bg-[var(--primary)] hover:text-white transition-colors"
-                  aria-label={item.label}
-                >
-                  {item.icon === "facebook" && <Facebook className="w-5 h-5" />}
-                  {item.icon === "instagram" && <Instagram className="w-5 h-5" />}
-                  {item.icon === "twitter" && <Twitter className="w-5 h-5" />}
-                  {item.icon === "youtube" && <Youtube className="w-5 h-5" />}
-                </a>
-              ))}
-            </div>
           </div>
 
-          {/* Company Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-3">
-              {footerNavigation.company.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="text-[var(--foreground-secondary)] hover:text-white text-sm transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Nav Links */}
+          <nav
+            style={{
+              display: "flex",
+              gap: "32px",
+            }}
+            className="hidden lg:flex"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                style={{
+                  color: "#888",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                  transition: "color 0.2s",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = "#fff")}
+                onMouseOut={(e) => (e.currentTarget.style.color = "#888")}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Legal Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {footerNavigation.legal.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="text-[var(--foreground-secondary)] hover:text-white text-sm transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 text-[var(--foreground-secondary)] hover:text-white text-sm transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phone}`}
-                  className="flex items-center gap-2 text-[var(--foreground-secondary)] hover:text-white text-sm transition-colors"
-                >
-                  <Phone className="w-4 h-4" />
-                  {siteConfig.phone}
-                </a>
-              </li>
-              <li>
-                <div className="flex items-start gap-2 text-[var(--foreground-secondary)] text-sm">
-                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>
-                    {siteConfig.address.line1}
-                    <br />
-                    {siteConfig.address.line2}
-                    <br />
-                    {siteConfig.address.city}, {siteConfig.address.country}
-                  </span>
-                </div>
-              </li>
-            </ul>
+          {/* Social Icons */}
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+            }}
+          >
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  background: "#1E1E1E",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#888",
+                  textDecoration: "none",
+                  transition: "all 0.2s",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = "#E53935";
+                  e.currentTarget.style.color = "#fff";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = "#1E1E1E";
+                  e.currentTarget.style.color = "#888";
+                }}
+              >
+                <social.icon style={{ width: "18px", height: "18px" }} />
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[var(--border)]">
-        <div className="container py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[var(--foreground-muted)] text-sm">
-              © {currentYear} {siteConfig.name}. All rights reserved.
+      <div style={{ borderTop: "1px solid #333" }}>
+        <div className="container">
+          <div
+            style={{
+              padding: "16px 0",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: "16px",
+            }}
+          >
+            <p style={{ color: "#666", fontSize: "13px" }}>
+              &copy; {currentYear} {siteConfig.name}. All rights reserved. Play Responsibly. 21+ Only.
             </p>
-            <p className="text-[var(--foreground-muted)] text-sm">
-              Play Responsibly. 21+ Only.
-            </p>
+            <div style={{ display: "flex", gap: "24px" }}>
+              <Link
+                href="/privacy"
+                style={{
+                  color: "#666",
+                  textDecoration: "none",
+                  fontSize: "13px",
+                  transition: "color 0.2s",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = "#fff")}
+                onMouseOut={(e) => (e.currentTarget.style.color = "#666")}
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/terms"
+                style={{
+                  color: "#666",
+                  textDecoration: "none",
+                  fontSize: "13px",
+                  transition: "color 0.2s",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.color = "#fff")}
+                onMouseOut={(e) => (e.currentTarget.style.color = "#666")}
+              >
+                Terms
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -4,8 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 import { Card, CardContent, CardImage } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import { NewsArticle } from "@/types";
 
@@ -52,12 +50,12 @@ const newsArticles: NewsArticle[] = [
   },
 ];
 
-const categoryColors: Record<string, "primary" | "success" | "warning" | "gold"> = {
-  ANNOUNCEMENT: "primary",
-  STRATEGY: "success",
-  PLAYER_INTERVIEW: "gold",
-  TOURNAMENT: "primary",
-  PROMOTION: "warning",
+const categoryColors: Record<string, string> = {
+  ANNOUNCEMENT: "#E53935",
+  STRATEGY: "#4CAF50",
+  PLAYER_INTERVIEW: "#FFD700",
+  TOURNAMENT: "#E53935",
+  PROMOTION: "#FF9800",
 };
 
 const container = {
@@ -77,16 +75,37 @@ const item = {
 
 export function NewsHighlights() {
   return (
-    <section className="py-20 bg-[var(--background)]">
+    <section
+      style={{
+        padding: "80px 0",
+        background: "#0A0A0A",
+      }}
+    >
       <div className="container">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: "16px",
+            marginBottom: "48px",
+          }}
+          className="md:flex-row md:items-end"
+        >
           <div>
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-[var(--primary)] font-semibold text-sm uppercase tracking-wider"
+              style={{
+                color: "#E53935",
+                fontWeight: 600,
+                fontSize: "14px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
             >
               Latest Updates
             </motion.span>
@@ -95,7 +114,12 @@ export function NewsHighlights() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-4xl font-bold mt-2"
+              style={{
+                fontSize: "clamp(28px, 4vw, 40px)",
+                fontWeight: 700,
+                marginTop: "8px",
+                color: "#fff",
+              }}
             >
               News & Events
             </motion.h2>
@@ -106,9 +130,18 @@ export function NewsHighlights() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/news" className="group inline-flex items-center text-[var(--foreground-secondary)] hover:text-white transition-colors">
+            <Link
+              href="/news"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                color: "#888",
+                textDecoration: "none",
+                transition: "color 0.2s",
+              }}
+            >
               View All News
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              <ArrowRight style={{ width: "16px", height: "16px", marginLeft: "8px" }} />
             </Link>
           </motion.div>
         </div>
@@ -119,41 +152,82 @@ export function NewsHighlights() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(1, 1fr)",
+            gap: "24px",
+          }}
+          className="md:grid-cols-2 lg:grid-cols-3"
         >
           {newsArticles.map((article) => (
             <motion.div key={article.id} variants={item}>
-              <Link href={`/news/${article.id}`}>
-                <Card hover variant="bordered" className="h-full">
-                  <div className="relative">
+              <Link href={`/news/${article.id}`} style={{ textDecoration: "none" }}>
+                <Card hover variant="bordered" style={{ height: "100%" }}>
+                  <div style={{ position: "relative" }}>
                     <CardImage
                       src={article.imageUrl}
                       alt={article.title}
                       aspectRatio="16/9"
                     />
-                    <div className="absolute top-4 left-4">
-                      <Badge
-                        variant={categoryColors[article.category] || "default"}
-                        size="sm"
+                    <div style={{ position: "absolute", top: "16px", left: "16px" }}>
+                      <span
+                        style={{
+                          display: "inline-block",
+                          padding: "4px 10px",
+                          fontSize: "11px",
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                          color: article.category === "PLAYER_INTERVIEW" ? "#000" : "#fff",
+                          background: categoryColors[article.category] || "#E53935",
+                          borderRadius: "4px",
+                        }}
                       >
                         {article.category.replace("_", " ")}
-                      </Badge>
+                      </span>
                     </div>
                   </div>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h3 className="text-lg font-bold mb-2 line-clamp-2">
+                  <CardContent>
+                    <div style={{ marginBottom: "16px" }}>
+                      <h3
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: 700,
+                          marginBottom: "8px",
+                          color: "#fff",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
+                      >
                         {article.title}
                       </h3>
-                      <p className="text-[var(--foreground-secondary)] text-sm line-clamp-2">
+                      <p
+                        style={{
+                          color: "#888",
+                          fontSize: "14px",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
+                      >
                         {article.summary}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between text-sm text-[var(--foreground-muted)]">
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        fontSize: "14px",
+                        color: "#666",
+                      }}
+                    >
                       <span>{article.author}</span>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                      <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                        <Clock style={{ width: "16px", height: "16px" }} />
                         <span>{formatDate(article.publishedAt)}</span>
                       </div>
                     </div>

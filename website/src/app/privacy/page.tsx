@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   const lastUpdated = "January 1, 2025";
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       <section className="py-16 bg-[var(--background-secondary)]">
         <div className="container">
           <div className="max-w-3xl">

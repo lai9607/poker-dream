@@ -52,30 +52,63 @@ export default function TournamentGalleryPage() {
       : gallerySeries.filter((s) => s.id === selectedSeries);
 
   return (
-    <div className="pt-20">
+    <div style={{ paddingTop: "80px" }}>
       {/* Hero Section */}
-      <section className="py-16 bg-[var(--background-secondary)]">
+      <section
+        style={{
+          padding: "64px 0",
+          background: "#121212",
+        }}
+      >
         <div className="container">
-          <Link
-            href="/gallery"
-            className="inline-flex items-center text-[var(--foreground-secondary)] hover:text-white mb-6"
+          <div style={{ marginBottom: "24px" }}>
+            <Link
+              href="/gallery"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                color: "#888",
+                textDecoration: "none",
+              }}
+            >
+              <ChevronLeft style={{ width: "16px", height: "16px", marginRight: "4px" }} />
+              Back to Gallery
+            </Link>
+          </div>
+          <h1
+            style={{
+              fontSize: "clamp(32px, 5vw, 48px)",
+              fontWeight: 700,
+              marginBottom: "16px",
+              color: "#fff",
+            }}
           >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back to Gallery
-          </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Tournament Photos
           </h1>
-          <p className="text-xl text-[var(--foreground-secondary)]">
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#888",
+            }}
+          >
             Browse action shots and moments from our poker tournaments.
           </p>
         </div>
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-6 border-b border-[var(--border)] sticky top-20 bg-[var(--background)] z-30">
+      <section
+        style={{
+          padding: "24px 0",
+          borderBottom: "1px solid #333",
+          position: "sticky",
+          top: "80px",
+          background: "#0A0A0A",
+          zIndex: 30,
+        }}
+      >
         <div className="container">
-          <div className="flex gap-2 overflow-x-auto">
+          <div style={{ display: "flex", gap: "8px", overflowX: "auto" }}>
             <Button
               variant={selectedSeries === "all" ? "primary" : "outline"}
               size="sm"
@@ -98,20 +131,33 @@ export default function TournamentGalleryPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-12">
+      <section style={{ padding: "48px 0" }}>
         <div className="container">
           {filteredSeries.map((series) => (
-            <div key={series.id} className="mb-12">
-              <div className="flex justify-between items-center mb-6">
+            <div key={series.id} style={{ marginBottom: "48px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "24px",
+                }}
+              >
                 <div>
-                  <h2 className="text-2xl font-bold">{series.name}</h2>
-                  <p className="text-[var(--foreground-secondary)]">{series.date}</p>
+                  <h2 style={{ fontSize: "24px", fontWeight: 700, color: "#fff" }}>{series.name}</h2>
+                  <p style={{ color: "#888", marginTop: "4px" }}>{series.date}</p>
                 </div>
-                <span className="text-[var(--foreground-muted)]">
+                <span style={{ color: "#666" }}>
                   {series.photos.length} photos
                 </span>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gap: "16px",
+                }}
+                className="md:grid-cols-3 lg:grid-cols-4">
                 {series.photos.map((photo) => (
                   <div
                     key={photo.id}
